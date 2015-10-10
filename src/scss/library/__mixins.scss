@@ -1,0 +1,61 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Mixins & Helper Functions
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+
+//
+// Vertical Align
+//
+@mixin valign() {
+
+	position: relative;
+	top: 50%;
+	@include transform(translateY(-50%));
+
+} // valign()
+
+
+
+//
+// Image Sprite
+//
+@mixin icon-sprite($obj) {
+
+  // Get variables out of obj
+  $width:  map-get($obj, width);
+  $xpos:   map-get($obj, xpos);
+  $ypos:   map-get($obj, ypos);
+  $height: map-get($obj, height);
+  $sprite: map-get($obj, sprite);
+
+  // Use specified sprite file, or default icon sprite
+  @if $sprite {
+
+    //
+    // Custom Sprites here. 
+    //
+
+  } @else {
+    background-image: url($main-icon-sprite-file);
+
+    @include hidpi(2) {
+      background-image: url($main-icon-sprite-retina-file);
+      background-size: $main-icon-sprite-width;
+      background-position: ($xpos / 2) ($ypos / 2);
+    }
+
+  }
+
+  // Set special height if required
+  @if $height {
+    width: $width; 
+    height: $height;
+  } @else {
+    @include size($width);
+  }
+
+  background-position: $xpos $ypos;
+
+} // icon-sprite

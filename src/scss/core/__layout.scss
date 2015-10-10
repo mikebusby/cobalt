@@ -1,0 +1,50 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  App Layout
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+
+//
+// Main Wrapper
+//
+._wrapper {
+
+  width: $wrapper-width;
+  margin: 0 auto;
+
+  @include max-screen($wrapper-width + 40) {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+} // _wrapper
+
+
+
+//
+// Column Containers
+//
+.quad-container {
+
+  @include outer-container();
+
+  > div { @include span-columns(3);  }
+
+} // quad-container
+
+.triple-container {
+
+  @include outer-container();
+
+  > div { @include span-columns(4);  }
+
+} // triple-container
+
+.double-container {
+
+  @include outer-container();
+
+  > div { @include span-columns(6);  }
+
+} // double-container

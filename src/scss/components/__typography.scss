@@ -1,0 +1,29 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Typography Component
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+//
+// Import font from GWF
+//
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
+
+
+
+//
+// Font Styles
+//
+h1 { font-size: $font-size-h1; line-height: $font-size-h1 + .5; }
+h2 { font-size: $font-size-h2; line-height: $font-size-h2 + .5; }
+h3 { font-size: $font-size-h3; line-height: $font-size-h3 + .5; }
+h4 { font-size: $font-size-h4; line-height: $font-size-h4 + .5; }
+h5 { font-size: $font-size-h5; line-height: $font-size-h5 + .5; }
+h6 { font-size: $font-size-h6; line-height: $font-size-h6 + .5; }
+
+
+
+//
+// EM styles
+//
+em { font-style: italic; }

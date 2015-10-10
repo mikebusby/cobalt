@@ -1,0 +1,86 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Variables
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+
+//
+// Colors
+//
+
+// Base Colors
+$black:                                 #000;
+$white:                                 #fff;
+$off-white:                             #fafafa;
+
+// Grey Scale
+$light-grey:                            #adc0cf;
+$medium-grey:                           #6d7f8d;
+$dark-grey:                             #2e363c;
+
+
+// Text colors
+$light-text-color:                      $light-grey;
+$medium-text-color:                     $medium-grey;
+$dark-text-color:                       $dark-grey;
+
+// Other colours
+$bg-color:                              $off-white;
+
+
+
+//
+// Paths
+//
+$font-path:                             "fonts/";
+$img-path:                              "img/";
+
+
+//
+// Core Layout
+//
+$wrapper-width:                         1060px;
+$max-width:                             em(1060) !default;
+$z:                                     1337;
+
+
+//
+// Animation
+//
+$animation-duration:                    .2s;
+$timing-function:                       $ease-out-quad;
+$cubic-bezier:                          cubic-bezier(0.30,1.40,0.70,1);
+
+
+
+//
+// Typography
+//
+$font-family:                           "Roboto", Helvetica, sans-serif;
+
+$em-base:                               16px;
+$line-height-base:                      1.5em;
+
+$light-font:                            200;
+$medium-font:                           400;
+$bold-font:                             500;
+
+$headers:                               h1, h2, h3, h4, h5, h6;
+
+$font-size-h1:                          rem(36);
+$font-size-h2:                          rem(30);
+$font-size-h3:                          rem(24);
+$font-size-h4:                          rem(18);
+$font-size-h5:                          rem(16);
+$font-size-h6:                          rem(12);
+
+
+
+//
+// Breakpoints
+//
+$xs-screen:                             480px !default;
+$sm-screen:                             768px !default;
+$md-screen:                             992px !default;
+$lg-screen:                             1200px !default;
