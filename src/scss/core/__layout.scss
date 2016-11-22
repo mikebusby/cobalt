@@ -1,8 +1,8 @@
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
 //  App Layout
 //
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 
 //
@@ -19,32 +19,3 @@
   }
 
 } // _wrapper
-
-
-
-//
-// Column Containers
-//
-.quad-container {
-
-  @include outer-container();
-
-  > div { @include span-columns(3);  }
-
-} // quad-container
-
-.triple-container {
-
-  @include outer-container();
-
-  > div { @include span-columns(4);  }
-
-} // triple-container
-
-.double-container {
-
-  @include outer-container();
-
-  > div { @include span-columns(6);  }
-
-} // double-container

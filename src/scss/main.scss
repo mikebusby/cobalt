@@ -1,4 +1,4 @@
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
 //
 //     _____     __        ____
@@ -8,12 +8,11 @@
 //
 //   Cobalt is built by Mike Busby
 //
-//   cobalt.mikebusby.ca
-//   hello@mikebusby.ca
+//   mike@busby.design
 //   @mikebusby
 //
 //
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 
 //
@@ -25,9 +24,6 @@
 
 // Import Variables & Bourbon Defaults
 @import "core/__variables";
-
-// Import Neat
-@import "neat";
 
 // Import SCSS Media Queries
 @import "../../vendor/sass-mediaqueries/_media-queries";

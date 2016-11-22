@@ -1,4 +1,4 @@
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
 //
 //     _____     __        ____
@@ -12,19 +12,20 @@
 //   @mikebusby
 //
 //
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 // Require Gulp & Plugins
 var gulp            = require("gulp");
 var gulpLoadPlugins = require("gulp-load-plugins");
-var neat            = require('node-neat').includePaths;
+var neat            = require("node-neat").includePaths;
 
 // Rename some plugins
 var plugins = gulpLoadPlugins({
   rename: {
     "gulp-sass": "sass",
     "gulp-bower": "bower",
-    "gulp-file-include": "fileinclude"
+    "gulp-file-include": "fileinclude",
+    "gulp-autoprefixer": "autoprefixer"
   }
 });
 
@@ -81,6 +82,10 @@ gulp.task("styles", function() {
       outputStyle: "compressed",
       includePaths: ["styles"].concat(neat)
     }))
+    .pipe(plugins.autoprefixer({
+       browsers: ["last 3 versions"],
+       cascade: false
+     }))
     .pipe(plugins.sourcemaps.write("/"))
     .on("error", errorLog)
     .pipe(gulp.dest(config.buildPath + "css"));

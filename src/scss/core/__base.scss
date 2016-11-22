@@ -1,13 +1,13 @@
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
 //  Base Styles
 //
-// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 html, body { @include size(100%); }
 
 body {
-  
+
   font-family: $font-family;
   font-size: $em-base;
   line-height: $line-height-base;
@@ -25,7 +25,7 @@ a {
   color: $dark-text-color;
   text-decoration: none;
 
-  @include transition(color .2s);
+  transition: color 200ms;
 
   &:hover {
     color: blue !important;
