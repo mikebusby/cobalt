@@ -1,6 +1,6 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
-//  Break Point Tester
+//  Library > Break Point Tester
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
@@ -9,31 +9,31 @@
 // <body class="bp-tester">
 
 body.bp-tester:after {
-	position: fixed;
-	bottom: 0; left: 0;
-	z-index: $z;
-	width: 100%;
-	padding: 10px;
-	text-align: center;
-	color: $white;
-	content: "";
-	opacity: .9;
-	
-	@media (max-width: $lg-screen) {
-		background: red;
-		content: "Large - 1200px";
-	}
-	@media (max-width: $md-screen) {
-		background: orange;
-		content: "Medium - 992px";
-	}
-	@media (max-width: $sm-screen) {
-		background: lightblue;
-		content: "Small - 768px";
-	}
-	@media (max-width: $xs-screen) {
-		background: lightgreen;
-		content: "Extra Small - 480px";
-	}
+  position: fixed;
+  bottom: 0; left: 0;
+  z-index: $z;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: $white;
+  content: "";
+  opacity: .9;
+
+  @media (max-width: $lg-screen) {
+    background: red;
+    content: "Large - 1200px";
+  }
+  @media (max-width: $md-screen) {
+    background: orange;
+    content: "Medium - 992px";
+  }
+  @media (max-width: $sm-screen) {
+    background: lightblue;
+    content: "Small - 768px";
+  }
+  @media (max-width: $xs-screen) {
+    background: lightgreen;
+    content: "Extra Small - 480px";
+  }
 
 } // bp-tester

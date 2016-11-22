@@ -1,6 +1,6 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 //
-//  Mixins & Helper Functions
+//  Library > Mixins & Helper Functions
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
@@ -10,9 +10,9 @@
 //
 @mixin valign() {
 
-	position: relative;
-	top: 50%;
-	@include transform(translateY(-50%));
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
 
 } // valign()
 
@@ -34,7 +34,7 @@
   @if $sprite {
 
     //
-    // Custom Sprites here. 
+    // Custom Sprites here.
     //
 
   } @else {
@@ -50,7 +50,7 @@
 
   // Set special height if required
   @if $height {
-    width: $width; 
+    width: $width;
     height: $height;
   } @else {
     @include size($width);
