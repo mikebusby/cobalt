@@ -17,7 +17,7 @@
 // Require Gulp & Plugins
 var gulp            = require("gulp");
 var gulpLoadPlugins = require("gulp-load-plugins");
-var neat            = require("node-neat").includePaths;
+var bourbon         = require('node-bourbon').includePaths;
 
 // Rename some plugins
 var plugins = gulpLoadPlugins({
@@ -80,7 +80,7 @@ gulp.task("styles", function() {
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass({
       outputStyle: "compressed",
-      includePaths: ["styles"].concat(neat)
+      includePaths: ["styles"].concat(bourbon)
     }))
     .pipe(plugins.autoprefixer({
        browsers: ["last 3 versions"],
