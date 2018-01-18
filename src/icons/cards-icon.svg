@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;">
-<path d="M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,6l0,3H4V6H20z M4,18
-	v-7h16l0,7H4z"/>
-<path d="M15,12h4v2h-4V12z M5,12h7v2H5V12z M5,15h5v2H5V15z" fill="currentColor" />
-</svg>
