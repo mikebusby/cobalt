@@ -9,46 +9,38 @@
 //   Cobalt is built by Mike Busby
 //
 //   hello@mikebusby.ca
-//   @mikebusby
+//   @MikeBusby
 //
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
-// Require Gulp & Plugins
+// Require Gulp, PostCSS plugins & Load Gulp plugins
 var gulp            = require('gulp');
 var path            = require('path');
+var postcssImport   = require("postcss-import");
+var cssnext         = require('postcss-cssnext');
+var postcssNested   = require('postcss-nested');
+var mixins          = require('postcss-sassy-mixins');
+var conditionals    = require('postcss-conditionals')
+var rucksack        = require('rucksack-css');
+var cssnano         = require('cssnano');
+var mqpacker        = require("css-mqpacker");
 var gulpLoadPlugins = require('gulp-load-plugins');
-var bourbon         = require('node-bourbon').includePaths;
 
 // Rename some plugins
 var plugins = gulpLoadPlugins({
-  rename: {
-    'gulp-sass': 'sass',
-    'gulp-bower': 'bower',
-    'gulp-file-include': 'fileinclude',
-    'gulp-autoprefixer': 'autoprefixer'
-  }
+  rename: { 'gulp-file-include': 'fileinclude' }
 });
 
 // Config Variables
 var config = {
-  srcPath:   'src/',
-  buildPath: 'www/',
-  tplPath:   'src/tpl/'
+  srcPath:    'src/',
+  buildPath:  'www/',
+  staticPath: 'src/static/',
+  tplPath:    'src/tpl/'
 }
 
-// Output errors to console
-function errorLog(error) {
-  console.error.bind(error);
-  plugins.notify().write(error);
-  this.emit('end');
-}
-
-
-
-//
-// HTML Compliation
-//
+// HTML Compilation
 gulp.task('html', function() {
   gulp.src([config.tplPath + '*.html'])
     .pipe(plugins.fileinclude({
@@ -58,49 +50,29 @@ gulp.task('html', function() {
     .pipe(gulp.dest(config.buildPath));
 });
 
-
-
-//
-// JavaScript Taks
-//
-gulp.task('scripts', function() {
-  gulp.src([config.srcPath + 'js/*.js', !config.srcPath + 'www/js/*.min.js'])
-    .pipe(plugins.uglify())
-    .on('error', errorLog)
-    .pipe(plugins.concat('main.min.js'))
-    .pipe(gulp.dest(config.buildPath + 'js'));
+// CSS Build
+gulp.task('css', function() {
+  return gulp.src(config.srcPath + '/css/main.css')
+    .pipe(plugins.postcss([
+      postcssImport(),
+      cssnext({
+        browsers: ['last 1 version']
+      }),
+      postcssNested(),
+      mixins(),
+      conditionals(),
+      rucksack(),
+      cssnano({ autoprefixer: false }),
+      mqpacker()
+    ], { syntax: require('postcss-scss') }))
+    .pipe(gulp.dest(config.buildPath + 'css/'));
 });
 
-
-
-//
-// SCSS Compliation
-//
-gulp.task('styles', function() {
-  gulp.src(config.srcPath + 'scss/*.scss')
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass({
-      outputStyle: 'compressed',
-      includePaths: ['styles'].concat(bourbon)
-    }))
-    .pipe(plugins.autoprefixer({
-       browsers: ['last 3 versions'],
-       cascade: false
-     }))
-    .pipe(plugins.sourcemaps.write('/'))
-    .on('error', errorLog)
-    .pipe(gulp.dest(config.buildPath + 'css'));
-});
-
-
-
-//
-// SVG Icon Generation
-//
-gulp.task('svgicons', function () {
+// Inline SVG Icons
+gulp.task("svgicons", function () {
   var svgs = gulp
-    .src(config.srcPath + 'icons/*.svg')
-    .pipe(plugins.svgmin(function (file) {
+    .src(config.staticPath + "icons/*.svg")
+    .pipe(plugins.svgmin(function(file) {
       var prefix = path.basename(file.relative, path.extname(file.relative));
       return {
         plugins: [{
@@ -118,17 +90,12 @@ gulp.task('svgicons', function () {
   }
 
   return gulp
-    .src(config.srcPath + 'icons/_inline-icons.html')
+    .src(config.staticPath + "icons/_inline-icons.html")
     .pipe(plugins.inject(svgs, { transform: fileContents }))
-    .pipe(gulp.dest(config.srcPath + 'tpl/'));
-
+    .pipe(gulp.dest(config.srcPath + "tpl/inc/"));
 });
 
-
-
-//
 // Web Server
-//
 gulp.task('webserver', function() {
   gulp.src(config.buildPath)
     .pipe(plugins.webserver({
@@ -137,52 +104,33 @@ gulp.task('webserver', function() {
     }));
 });
 
-
-
-//
-// Move Images to build
-//
+// Move Images to Build
 gulp.task('copyimg', function() {
-  gulp.src(config.srcPath + '/img/*')
+  gulp.src(config.staticPath + '/img/*')
   .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
-
-
-//
-// Move Bower pkg's to build (some needed)
-//
-gulp.task('copyvendor', function() {
-  gulp.src('vendor/**/*')
-  .pipe(gulp.dest(config.buildPath + 'vendor/'));
+// Move Favicon to Build
+gulp.task('copyfavicon', function() {
+  gulp.src(config.staticPath + '/favicon/favicon.ico')
+  .pipe(gulp.dest(config.buildPath));
 });
 
-
-
-//
-// Watch File changes
-//
+// Watch File Changes
 gulp.task('watch', function() {
   gulp.watch(config.srcPath + 'img/*', ['copyimg']);
-  gulp.watch(config.srcPath + 'vendor/*', ['copyvendor']);
-  gulp.watch(config.srcPath + 'js/*.js', ['scripts']);
-  gulp.watch(config.srcPath + 'scss/**/*.scss', ['styles']);
-  gulp.watch(config.srcPath + 'icons/*.svg', ['svgicons']);
   gulp.watch(config.tplPath + '**/*.html', ['html']);
+  gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
+  gulp.watch(config.staticPath + "icons/*.svg", ["svgicons"]);
 });
 
-
-
-//
 // Run Tasks | $ gulp
-//
 gulp.task('default', [
   'html',
-  'scripts',
-  'styles',
+  'css',
   'svgicons',
   'copyimg',
-  'copyvendor',
+  'copyfavicon',
   'watch',
   'webserver'
 ]);
