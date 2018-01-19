@@ -4,18 +4,18 @@ Cobalt is a simple build framework for building static projects. Built by @MikeB
 
 ## Using
 
-Gulp
-PostCSS
-CSS Next
-Rucksack CSS
-CSS Nano
-Media Query Packer
+Gulp  
+PostCSS  
+CSS Next  
+Rucksack CSS  
+CSS Nano  
+Media Query Packer  
 
-PostCSS SCSS like plugins:
-  Import
-  Nested
-  Mixins
-  Conditionals
+PostCSS SCSS like plugins:  
+  Import  
+  Nested  
+  Mixins  
+  Conditionals  
 
 ## Installation
 
