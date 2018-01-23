@@ -17,14 +17,14 @@
 // Require Gulp, PostCSS plugins & Load Gulp plugins
 var gulp            = require('gulp');
 var path            = require('path');
-var postcssImport   = require("postcss-import");
+var postcssImport   = require('postcss-import');
 var cssnext         = require('postcss-cssnext');
 var postcssNested   = require('postcss-nested');
 var mixins          = require('postcss-sassy-mixins');
 var conditionals    = require('postcss-conditionals')
 var rucksack        = require('rucksack-css');
 var cssnano         = require('cssnano');
-var mqpacker        = require("css-mqpacker");
+var mqpacker        = require('css-mqpacker');
 var gulpLoadPlugins = require('gulp-load-plugins');
 
 // Rename some plugins
@@ -69,9 +69,9 @@ gulp.task('css', function() {
 });
 
 // Inline SVG Icons
-gulp.task("svgicons", function () {
+gulp.task('svgicons', function () {
   var svgs = gulp
-    .src(config.staticPath + "icons/*.svg")
+    .src(config.staticPath + 'icons/*.svg')
     .pipe(plugins.svgmin(function(file) {
       var prefix = path.basename(file.relative, path.extname(file.relative));
       return {
@@ -90,7 +90,7 @@ gulp.task("svgicons", function () {
   }
 
   return gulp
-    .src(config.staticPath + "icons/_inline-icons.html")
+    .src(config.staticPath + 'icons/_inline-icons.html')
     .pipe(plugins.inject(svgs, { transform: fileContents }))
     .pipe(gulp.dest(config.staticPath + 'icons/'));
 });
@@ -121,7 +121,7 @@ gulp.task('watch', function() {
   gulp.watch(config.srcPath + 'img/*', ['copyimg']);
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
-  gulp.watch(config.staticPath + "icons/*.svg", ["svgicons"]);
+  gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
 });
 
 // Run Tasks | $ gulp
