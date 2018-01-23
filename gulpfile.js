@@ -92,7 +92,7 @@ gulp.task("svgicons", function () {
   return gulp
     .src(config.staticPath + "icons/_inline-icons.html")
     .pipe(plugins.inject(svgs, { transform: fileContents }))
-    .pipe(gulp.dest(config.srcPath + "tpl/inc/"));
+    .pipe(gulp.dest(config.staticPath + 'icons/'));
 });
 
 // Web Server
