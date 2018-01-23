@@ -5,5 +5,4 @@ node_modules/
 npm-debug.log
 www/
 vendor/
-src/tpl/inc/_inline-icons.html
 .idea/
