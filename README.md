@@ -19,11 +19,11 @@ PostCSS SCSS like plugins:
 
 ## Installation
 
-Node & NPM need to be installed.
+Node & NPM or Yarn need to be installed.
 
 ## Usage
 
-```npm install```
+```npm install``` or ```yarn install```
 
 Then simply run ```gulp``` and navigate to ```http://localhost:1337```
 
