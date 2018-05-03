@@ -7,3 +7,4 @@ www/
 vendor/
 .idea/
 .vscode/
+yarn-error.log
