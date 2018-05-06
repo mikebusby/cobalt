@@ -58,8 +58,8 @@ gulp.task('css', function() {
       cssnext({
         browsers: ['last 1 version']
       }),
-      postcssNested(),
       mixins(),
+      postcssNested(),
       conditionals(),
       rucksack(),
       cssnano({ autoprefixer: false }),
