@@ -68,6 +68,14 @@ gulp.task('css', function() {
     .pipe(gulp.dest(config.buildPath + 'css/'));
 });
 
+// JavaScript Taks
+gulp.task('scripts', function () {
+  gulp.src([config.srcPath + 'js/*.js', !config.srcPath + 'www/js/*.min.js'])
+    .pipe(plugins.uglify())
+    .pipe(plugins.concat('main.min.js'))
+    .pipe(gulp.dest(config.buildPath + 'js'));
+});
+
 // Inline SVG Icons
 gulp.task('svgicons', function () {
   var svgs = gulp
@@ -121,6 +129,7 @@ gulp.task('watch', function() {
   gulp.watch(config.srcPath + 'img/*', ['copyimg']);
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
+  gulp.watch(config.srcPath + 'js/*.js', ['scripts']);
   gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
 });
 
@@ -128,6 +137,7 @@ gulp.task('watch', function() {
 gulp.task('default', [
   'html',
   'css',
+  'scripts',
   'svgicons',
   'copyimg',
   'copyfavicon',
