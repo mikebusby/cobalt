@@ -1,0 +1,51 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Library > Breakpoint Tester
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+.bp-tester::after {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 999999;
+  width: 160px;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  content: "";
+  opacity: .25;
+  font-size: 10px;
+  font-weight: 500;
+
+  @media (--xxl-bp) {
+    background: red;
+    content: "XXL - Min 1200 · Max 1440";
+  }
+  @media (--xl-bp) {
+    background: orange;
+    content: "XL - Min 992 · Max 1200";
+  }
+  @media (--l-bp) {
+    background: goldenrod;
+    content: "L - Min 768 · Max 992";
+  }
+  @media (--m-bp) {
+    background: green;
+    content: "M - Min 580 · Max 768";
+  }
+  @media (--s-bp) {
+    background: blue;
+    content: "S - Min 480 · Max 580";
+  }
+  @media (--xs-bp) {
+    background: purple;
+    content: "XS - Min 380 · Max 480";
+  }
+  @media (--xxs-bp) {
+    background: fuchsia;
+    content: "XXS - Min 380";
+  }
+
+} // bp-tester

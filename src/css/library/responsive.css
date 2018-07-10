@@ -1,0 +1,27 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Library > Responsive
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+@custom-media --xxl-bp (max-width: 1440px);
+@custom-media --xl-bp  (max-width: 1200px);
+@custom-media --l-bp   (max-width: 992px);
+@custom-media --m-bp   (max-width: 768px);
+@custom-media --s-bp   (max-width: 580px);
+@custom-media --xs-bp  (max-width: 480px);
+@custom-media --xxs-bp (max-width: 380px);
+
+
+
+//
+// Mobile & Desktop Hide Helpers
+//
+.h-xxl-hide { @media (--xxl-bp) { display: none; }}
+.h-xl-hide  { @media (--xl-bp) { display: none; }}
+.h-l-hide   { @media (--l-bp) { display: none; }}
+.h-m-hide   { @media (--m-bp) { display: none; }}
+.h-s-hide   { @media (--s-bp) { display: none; }}
+.h-xs-hide  { @media (--xs-bp) { display: none; }}
+.h-xxs-hide { @media (--xxs-bp) { display: none; }}
