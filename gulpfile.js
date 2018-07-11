@@ -81,7 +81,7 @@ gulp.task('css', function() {
 
 // JavaScript Taks
 gulp.task('scripts', function () {
-  gulp.src([config.srcPath + 'js/*.js', !config.srcPath + 'www/js/*.min.js'])
+  gulp.src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
     .pipe(plugins.uglify())
     .pipe(plugins.concat('main.min.js'))
     .pipe(gulp.dest(config.buildPath + 'js'));
@@ -139,7 +139,7 @@ gulp.task('copyfavicon', function () {
 gulp.task('watch', function() {
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
-  gulp.watch(config.srcPath + 'js/*.js', ['scripts']);
+  gulp.watch(config.srcPath + 'js/**/*.js', ['scripts']);
   gulp.watch(config.staticPath + 'img/*.png', ['copyimg']);
   gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
 });
