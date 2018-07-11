@@ -22,10 +22,11 @@ var cssnext         = require('postcss-cssnext');
 var postcssNested   = require('postcss-nested');
 var mixins          = require('postcss-sassy-mixins');
 var conditionals    = require('postcss-conditionals')
+var postcssAssets   = require('postcss-assets');
+var easysprite      = require('postcss-easysprites');
 var rucksack        = require('rucksack-css');
 var cssnano         = require('cssnano');
 var mqpacker        = require('css-mqpacker');
-var postcssAssets   = require('postcss-assets');
 var gulpLoadPlugins = require('gulp-load-plugins');
 
 // Rename some plugins
@@ -63,11 +64,16 @@ gulp.task('css', function() {
       postcssNested(),
       conditionals(),
       rucksack(),
+      easysprite({
+        imagePath: config.staticPath + 'sprite-img/',
+        spritePath: config.buildPath + 'img/',
+        stylesheetPath: config.buildPath + 'css/'
+      }),
       cssnano(),
       mqpacker(),
       postcssAssets({
         basePath: config.staticPath,
-        loadPaths: ['img']
+        loadPaths: ['img', 'sprite-img']
       })
     ], { syntax: require('postcss-scss') }))
     .pipe(gulp.dest(config.buildPath + 'css/'));

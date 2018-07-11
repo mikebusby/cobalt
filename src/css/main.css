@@ -14,3 +14,18 @@
 @import 'library/helpers';
 @import 'library/responsive';
 @import 'library/bp-tester';
+
+// ##################
+// Examples
+// ##################
+//
+// .arrow {
+//   width: width('sprite-img/arrow.png'); // Using PostCSS Assets to get dimension of asset
+//   height: height('sprite-img/arrow.png');
+//   background-image: url('/arrow.png#sprite'); // PostCSS Easysprite use the hash and URL doesn't need sprite-img/
+//
+//   // Simple retina mixin just outputs media query with content
+//   @include retina-img {
+//     background-image: url('/arrow@2x.png#sprite');
+//   }
+// }

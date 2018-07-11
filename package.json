@@ -23,6 +23,7 @@
     "postcss-assets": "^5.0.0",
     "postcss-conditionals": "^2.1.0",
     "postcss-cssnext": "^3.0.2",
+    "postcss-easysprites": "^0.1.9",
     "postcss-import": "^11.0.0",
     "postcss-nested": "^3.0.0",
     "postcss-sassy-mixins": "^2.1.0",
