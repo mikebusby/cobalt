@@ -6,12 +6,12 @@ Cobalt is a simple build framework for building static projects. Built by @MikeB
 
 Gulp  
 PostCSS  
-PostCSS Assets
-PostCSS Easy sprite
+PostCSS Assets  
+PostCSS Easy sprite  
 CSS Next  
 Rucksack CSS  
 CSS Nano  
-Media Query Packer 
+Media Query Packer  
 
 PostCSS SCSS like plugins:  
   Import  
