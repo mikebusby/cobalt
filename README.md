@@ -9,7 +9,8 @@ PostCSS
 CSS Next  
 Rucksack CSS  
 CSS Nano  
-Media Query Packer  
+Media Query Packer 
+PostCSS Assets
 
 PostCSS SCSS like plugins:  
   Import  

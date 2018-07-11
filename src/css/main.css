@@ -10,6 +10,7 @@
 
 // Library Imports
 @import 'library/reset';
+@import 'library/mixins';
 @import 'library/helpers';
 @import 'library/responsive';
 @import 'library/bp-tester';

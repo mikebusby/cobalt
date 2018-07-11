@@ -25,6 +25,7 @@ var conditionals    = require('postcss-conditionals')
 var rucksack        = require('rucksack-css');
 var cssnano         = require('cssnano');
 var mqpacker        = require('css-mqpacker');
+var postcssAssets   = require('postcss-assets');
 var gulpLoadPlugins = require('gulp-load-plugins');
 
 // Rename some plugins
@@ -62,8 +63,14 @@ gulp.task('css', function() {
       postcssNested(),
       conditionals(),
       rucksack(),
-      cssnano({ autoprefixer: false }),
-      mqpacker()
+      cssnano({ 
+        autoprefixer: false 
+      }),
+      mqpacker(),
+      postcssAssets({
+        basePath: config.staticPath,
+        loadPaths: ['img']
+      })
     ], { syntax: require('postcss-scss') }))
     .pipe(gulp.dest(config.buildPath + 'css/'));
 });
@@ -113,15 +120,15 @@ gulp.task('webserver', function() {
 });
 
 // Move Images to Build
-gulp.task('copyimg', function() {
+gulp.task('copyimg', function () {
   gulp.src(config.staticPath + '/img/*')
-  .pipe(gulp.dest(config.buildPath + 'img/'));
+    .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
 // Move Favicon to Build
-gulp.task('copyfavicon', function() {
+gulp.task('copyfavicon', function () {
   gulp.src(config.staticPath + '/favicon/favicon.ico')
-  .pipe(gulp.dest(config.buildPath));
+    .pipe(gulp.dest(config.buildPath));
 });
 
 // Watch File Changes

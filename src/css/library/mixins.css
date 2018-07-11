@@ -1,0 +1,45 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Library > Mixins
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+
+//
+// Simple mixin to output specific code within a media target query
+//
+@mixin retina-img() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    @content;
+  }
+}
+
+
+
+//
+// Shift Element
+//
+@mixin shift($direction, $value) {
+  position: relative;
+
+  @if $direction == top {
+    top: $value;
+  } @else if $direction == bottom {
+    bottom: $value;
+  } @else if $direction == right {
+    right: $value;
+  } @else if $direction == left {
+    left: $value;
+  }
+}
+
+
+
+//
+// Size Simplification
+//
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
