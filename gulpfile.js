@@ -137,10 +137,10 @@ gulp.task('copyfavicon', function () {
 
 // Watch File Changes
 gulp.task('watch', function() {
-  gulp.watch(config.srcPath + 'img/*', ['copyimg']);
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
   gulp.watch(config.srcPath + 'js/*.js', ['scripts']);
+  gulp.watch(config.staticPath + 'img/*.png', ['copyimg']);
   gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
 });
 
