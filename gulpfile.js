@@ -63,9 +63,7 @@ gulp.task('css', function() {
       postcssNested(),
       conditionals(),
       rucksack(),
-      cssnano({ 
-        autoprefixer: false 
-      }),
+      cssnano(),
       mqpacker(),
       postcssAssets({
         basePath: config.staticPath,
