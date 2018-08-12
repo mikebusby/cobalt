@@ -13,6 +13,14 @@
 @custom-media --xs-bp  (max-width: 480px);
 @custom-media --xxs-bp (max-width: 380px);
 
+@custom-media --xxl-min-bp (min-width: 1440px);
+@custom-media --xl-min-bp  (min-width: 1200px);
+@custom-media --l-min-bp   (min-width: 992px);
+@custom-media --m-min-bp   (min-width: 768px);
+@custom-media --s-min-bp   (min-width: 580px);
+@custom-media --xs-min-bp  (min-width: 480px);
+@custom-media --xxs-min-bp (min-width: 380px);
+
 
 
 //
