@@ -15,19 +15,19 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 // Require Gulp, PostCSS plugins & Load Gulp plugins
-var gulp            = require('gulp');
-var path            = require('path');
-var postcssImport   = require('postcss-import');
-var cssnext         = require('postcss-cssnext');
-var postcssNested   = require('postcss-nested');
-var mixins          = require('postcss-sassy-mixins');
-var conditionals    = require('postcss-conditionals')
-var postcssAssets   = require('postcss-assets');
-var easysprite      = require('postcss-easysprites');
-var rucksack        = require('rucksack-css');
-var cssnano         = require('cssnano');
-var mqpacker        = require('css-mqpacker');
-var gulpLoadPlugins = require('gulp-load-plugins');
+var gulp             = require('gulp');
+var path             = require('path');
+var postcssImport    = require('postcss-import');
+var postcssPresetEnv = require('postcss-preset-env');
+var postcssNested    = require('postcss-nested');
+var mixins           = require('postcss-sassy-mixins');
+var conditionals     = require('postcss-conditionals')
+var postcssAssets    = require('postcss-assets');
+var easysprite       = require('postcss-easysprites');
+var rucksack         = require('rucksack-css');
+var cssnano          = require('cssnano');
+var mqpacker         = require('css-mqpacker');
+var gulpLoadPlugins  = require('gulp-load-plugins');
 
 // Production plugins
 var del         = require('del');
@@ -73,8 +73,12 @@ gulp.task('css', function() {
   return gulp.src(config.srcPath + '/css/main.css')
     .pipe(plugins.postcss([
       postcssImport(),
-      cssnext({
-        browsers: ['last 1 version']
+      postcssPresetEnv({
+        features: {
+          'custom-properties': {
+            preserve: false
+          }
+        }
       }),
       mixins(),
       postcssNested(),
