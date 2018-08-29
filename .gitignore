@@ -8,3 +8,4 @@ vendor/
 .idea/
 .vscode/
 yarn-error.log
+package-lock.json
