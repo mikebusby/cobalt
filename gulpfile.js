@@ -74,6 +74,7 @@ gulp.task('css', function() {
     .pipe(plugins.postcss([
       postcssImport(),
       postcssPresetEnv({
+        stage: 1,
         features: {
           'custom-properties': {
             preserve: false
