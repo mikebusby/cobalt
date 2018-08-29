@@ -210,9 +210,10 @@ gulp.task('default', [
 gulp.task('production', function(callback) {
   runSequence(
     'set-production',
-    'clean-build',        
+    'clean-build',   
+    'css',     
     'copyimg',
     'minifyimg',
-    ['html', 'css', 'scripts', 'svgicons', 'copyfavicon'],
+    ['html', 'scripts', 'svgicons', 'copyfavicon'],
     callback);
 });
