@@ -48,6 +48,8 @@ Node & NPM or Yarn need to be installed.
 
 Then simply run ```gulp``` and navigate to ```http://localhost:1337```
 
+For a **production ready build** run ```gulp production```
+
 ## License
 
 MIT.
