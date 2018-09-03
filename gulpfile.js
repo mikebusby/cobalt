@@ -8,7 +8,7 @@
 //
 //   Cobalt is built by Mike Busby
 //
-//   hello@mikebusby.ca
+//   hello@mikebusby.email
 //   @MikeBusby
 //
 //
@@ -40,6 +40,9 @@ var imageminZopfli   = require('imagemin-zopfli');
 var imageminMozjpeg  = require('imagemin-mozjpeg');
 var imageminGiflossy = require('imagemin-giflossy');
 
+// Development development plugins
+var ftp = require('vinyl-ftp');
+
 // Rename some plugins
 var plugins = gulpLoadPlugins({
   rename: { 
@@ -55,6 +58,14 @@ var config = {
   staticPath: 'src/static/',
   tplPath:    'src/tpl/',
   production: false
+}
+
+// FTP Config
+var ftpConfig = {
+  host:     '',
+  user:     '',
+  password: '',
+  parallel: 10
 }
 
 // HTML Compilation
@@ -152,7 +163,7 @@ gulp.task('copyimg', function () {
 
 // Move Favicon to Build
 gulp.task('copyfavicon', function () {
-  gulp.src(config.staticPath + '/favicon/favicon.ico')
+  return gulp.src(config.staticPath + '/favicon/favicon.ico')
     .pipe(gulp.dest(config.buildPath));
 });
 
@@ -165,6 +176,7 @@ gulp.task('watch', function() {
   gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
 });
 
+// Set production to true
 gulp.task('set-production', () => {
   return config.production = true;
 });
@@ -212,6 +224,7 @@ gulp.task('default', [
   'webserver'
 ]);
 
+// Run Tasks | $ gulp production
 gulp.task('production', function(callback) {
   runSequence(
     'set-production',
@@ -221,4 +234,26 @@ gulp.task('production', function(callback) {
     'minifyimg',
     ['html', 'scripts', 'svgicons', 'copyfavicon'],
     callback);
+});
+
+// Deploy to remote dev server | $ gulp deploy
+gulp.task('deploy', function () {
+  var conn = ftp.create({
+    host:     ftpConfig.host,
+    user:     ftpConfig.user,
+    password: ftpConfig.password,
+    parallel: ftpConfig.parallel
+  });
+
+  var globs = [
+    'css/**',
+    'img/**',
+    'js/**',
+    'fonts/**',
+    'favicon.ico',
+    '*.html'
+  ];
+
+  return gulp.src(globs, { base: './www', cwd: './www', buffer: false })
+    .pipe(conn.dest('/'));
 });
