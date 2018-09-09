@@ -62,7 +62,20 @@ table {
   box-sizing: border-box;
 }
 
+::selection { 
+	background-color: var(--primary-brand);
+	color: var(--white);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px white inset;
+}
+
 a {
   text-decoration: none;
   color: var(--link-color);
+}
+
+svg {
+	transition: color 200ms, fill 200ms;
 }

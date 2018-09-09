@@ -1,0 +1,103 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Core > Typography Helpers
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+.h-h1 {
+  font-size: 40px;
+  line-height: 50px;
+}
+
+.h-h2 {
+  font-size: 36px;
+  line-height: 46px;
+}
+
+.h-h3 {
+  font-size: 32px;
+  line-height: 42px;
+}
+
+.h-h4 {
+  font-size: 28px;
+  line-height: 38px;
+}
+
+.h-h5 {
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.h-h6 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+
+
+//
+// Body Copy sizes
+//
+.h-small-text {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.h-medium-text {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.h-default-text {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.h-large-text {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+
+
+//
+// Text Weights
+//
+.h-semibold-text {
+  font-weight: var(--semibold-font);
+}
+
+.h-bold-text {
+  font-weight: var(--bold-font);
+}
+
+.h-light-text {
+  font-weight: var(--light-font);
+}
+
+
+
+//
+// Colors
+//
+.h-white-text-color {
+  color: var(--white);
+}
+
+.h-dark-text-color {
+  color: var(--dark-text-color);
+}
+
+.h-medium-text-color {
+  color: var(--medium-text-color);
+}
+
+.h-light-text-color {
+  color: var(--light-text-color);
+}
+
+.h-primary-text-color {
+  color: var(--primary-brand);
+}

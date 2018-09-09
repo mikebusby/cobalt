@@ -8,9 +8,16 @@
 // Variable Imports
 @import 'variables/base';
 
+
 // Library Imports
 @import 'library/reset';
 @import 'library/mixins';
 @import 'library/helpers';
 @import 'library/responsive';
 @import 'library/bp-tester';
+
+
+// Core Imports
+@import 'core/base';
+@import 'core/typography';
+@import 'core/layout';

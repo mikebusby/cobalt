@@ -1,0 +1,27 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Core > Layout
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+.l-wrapper {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--mobile-edge);
+  padding-right: var(--mobile-edge);
+
+  &--large {
+    max-width: var(--large-wrapper);
+  }
+
+  &--standard {
+    max-width: var(--standard-wrapper);
+  }
+
+  &--small {
+    max-width: var(--small-wrapper);
+  }
+
+} // l-wrapper

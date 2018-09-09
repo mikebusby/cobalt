@@ -9,12 +9,34 @@
   --black:                               #000;
   --white:                               #fff;
 
-  --primary-brand:                       #f00;
-  --secondary-brand:                     #00f;
+  --primary-brand:                       #03A9F4;
+  --secondary-brand:                     #FF9800;
 
-  --dark-text-color:                     #000;
-  --medium-text-color:                   #444;
-  --light-text-color:                    #999;
+  --dark-text-color:                     #191E34;
+  --medium-text-color:                   #5F6477;
+  --light-text-color:                    #A7AAB8;
 
-  --link-color:                          #00f;
+  --link-color:                          #5677FC;
+
+  --font-family:                           Helvetica, Arial, sans-serif;
+  --light-font-weight:                     300;
+  --regular-font-weight:                   400;
+  --semibold-font-weight:                  600;
+  --bold-font-weight:                      700;
+
+  --z-index-1:                             1000;
+  --z-index-2:                             900;
+  --z-index-3:                             800;
+  --z-index-4:                             700;
+  --z-index-5:                             600;
+  --z-index-6:                             500;
+  --z-index-7:                             400;
+  --z-index-8:                             300;
+  --z-index-9:                             200;
+
+  --large-wrapper:                         1340px;
+  --standard-wrapper:                      1040px;
+  --small-wrapper:                         940px;
+
+  --mobile-edge:                           20px;
 }
