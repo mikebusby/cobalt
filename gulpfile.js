@@ -88,7 +88,8 @@ gulp.task('css', function() {
         stage: 1,
         features: {
           'custom-properties': {
-            preserve: false
+            preserve: false,
+            warnings: true
           }
         }
       }),

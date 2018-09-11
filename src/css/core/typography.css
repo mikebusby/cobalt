@@ -66,15 +66,15 @@
 // Text Weights
 //
 .h-light-text-weight {
-  font-weight: var(--light-font);
+  font-weight: var(--light-font-weight);
 }
 
 .h-semibold-text-weight {
-  font-weight: var(--semibold-font);
+  font-weight: var(--semibold-font-weight);
 }
 
 .h-bold-text-weight {
-  font-weight: var(--bold-font);
+  font-weight: var(--bold-font-weight);
 }
 
 
