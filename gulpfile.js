@@ -252,7 +252,7 @@ gulp.task('deploy', function () {
     'js/**',
     'fonts/**',
     'favicon.ico',
-    '*.html'
+    '**/*.html'
   ];
 
   return gulp.src(globs, { base: './www', cwd: './www', buffer: false })
