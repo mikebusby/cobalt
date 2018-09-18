@@ -151,6 +151,23 @@ gulp.task('svgicons', function () {
 gulp.task('webserver', function() {
   gulp.src(config.buildPath)
     .pipe(plugins.webserver({
+      middleware: function (req, res, next) {
+        if (
+            req.url.indexOf('css') >= 0 || 
+            req.url.indexOf('js') >= 0 || 
+            req.url.indexOf('img') >= 0 ||
+            req.url.indexOf('favicon.ico') >= 0
+          ) {
+          next();
+          return
+        }
+        if (req.url === '/') {
+          req.url = '/index';
+        }
+        const url = req.url + '.html';
+        req.url = url;
+        next();
+      },
       port: 1337,
       livereload: true
     }));
@@ -185,6 +202,12 @@ gulp.task('set-production', () => {
 // Delete build for production re-build
 gulp.task('clean-build', function() {
   return del(config.buildPath);
+});
+
+// Move sever side .htaccess file to remove .html extensions | PRODUCTION ONLY
+gulp.task('copyhtaccess', function () {
+  gulp.src(config.srcPath + '.htaccess')
+    .pipe(gulp.dest(config.buildPath));
 });
 
 // Minify Images | PRODUCTION ONLY
@@ -233,7 +256,7 @@ gulp.task('production', function(callback) {
     'css',     
     'copyimg',
     'minifyimg',
-    ['html', 'scripts', 'svgicons', 'copyfavicon'],
+    ['html', 'scripts', 'svgicons', 'copyfavicon', 'copyhtaccess'],
     callback);
 });
 
@@ -252,6 +275,7 @@ gulp.task('deploy', function () {
     'js/**',
     'fonts/**',
     'favicon.ico',
+    '.htaccess',
     '**/*.html'
   ];
 
