@@ -19,6 +19,7 @@ var gulp             = require('gulp');
 var path             = require('path');
 var postcssImport    = require('postcss-import');
 var postcssPresetEnv = require('postcss-preset-env');
+var postcssColorMod  = require('postcss-color-mod-function');
 var postcssNested    = require('postcss-nested');
 var mixins           = require('postcss-sassy-mixins');
 var conditionals     = require('postcss-conditionals')
@@ -93,6 +94,7 @@ gulp.task('css', function() {
           }
         }
       }),
+      postcssColorMod(),
       mixins(),
       postcssNested(),
       conditionals(),
