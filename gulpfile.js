@@ -48,7 +48,8 @@ var ftp = require('vinyl-ftp');
 var plugins = gulpLoadPlugins({
   rename: { 
     'gulp-file-include': 'fileinclude',
-    'gulp-if': 'gulpif'
+    'gulp-if': 'gulpif',
+    'gulp-append-query-string': 'querystring'
   }
 });
 
@@ -238,6 +239,13 @@ gulp.task('minifyimg', function() {
     .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
+// Cache Bust | PRODUCTION ONLY
+gulp.task('bust', function() {
+  gulp.src(config.buildPath + '**/*.html')
+    .pipe(plugins.querystring())
+    .pipe(gulp.dest(config.buildPath));
+});
+
 // Run Tasks | $ gulp
 gulp.task('default', [
   'html',
@@ -259,6 +267,7 @@ gulp.task('production', function(callback) {
     'copyimg',
     'minifyimg',
     ['html', 'scripts', 'svgicons', 'copyfavicon', 'copyhtaccess'],
+    'bust',
     callback);
 });
 
