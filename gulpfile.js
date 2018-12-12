@@ -17,6 +17,7 @@
 // Require Gulp, PostCSS plugins & Load Gulp plugins
 var gulp             = require('gulp');
 var path             = require('path');
+var replace          = require('gulp-replace');
 var postcssImport    = require('postcss-import');
 var postcssPresetEnv = require('postcss-preset-env');
 var postcssColorMod  = require('postcss-color-mod-function');
@@ -48,8 +49,7 @@ var ftp = require('vinyl-ftp');
 var plugins = gulpLoadPlugins({
   rename: { 
     'gulp-file-include': 'fileinclude',
-    'gulp-if': 'gulpif',
-    'gulp-append-query-string': 'querystring'
+    'gulp-if': 'gulpif'
   }
 });
 
@@ -70,9 +70,23 @@ var ftpConfig = {
   parallel: 10
 }
 
+// Datestamp for cache busting
+var getStamp = function () {
+  var date = new Date();
+
+  var year = date.getFullYear().toString();
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  var day = ('0' + date.getDate()).slice(-2);
+  var seconds = date.getSeconds().toString();
+
+  var timestamp = year + month + day + seconds;
+
+  return timestamp;
+};
+
 // HTML Compilation
 gulp.task('html', function() {
-  gulp.src([config.tplPath + '*.html'])
+  return gulp.src([config.tplPath + '*.html'])
     .pipe(plugins.fileinclude({
       prefix: '@@',
       basepath: '@file'
@@ -117,7 +131,7 @@ gulp.task('css', function() {
 
 // JavaScript Taks
 gulp.task('scripts', function () {
-  gulp.src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
+  return gulp.src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
     .pipe(plugins.gulpif(config.production, plugins.uglify()))
     .pipe(plugins.concat('main.min.js'))
     .pipe(gulp.dest(config.buildPath + 'js'));
@@ -241,8 +255,10 @@ gulp.task('minifyimg', function() {
 
 // Cache Bust | PRODUCTION ONLY
 gulp.task('bust', function() {
-  gulp.src(config.buildPath + '**/*.html')
-    .pipe(plugins.querystring())
+  return gulp.src(config.buildPath + '**/*.html')
+    .pipe(replace(/main.css([0-9]*)/g, 'main.css?' + getStamp()))
+    .pipe(replace(/favicon.ico([0-9]*)/g, 'favicon.ico?' + getStamp()))
+    .pipe(replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp()))
     .pipe(gulp.dest(config.buildPath));
 });
 
@@ -262,7 +278,7 @@ gulp.task('default', [
 gulp.task('production', function(callback) {
   runSequence(
     'set-production',
-    'clean-build',   
+    'clean-build',
     'css',     
     'copyimg',
     'minifyimg',
