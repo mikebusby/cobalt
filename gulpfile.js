@@ -212,7 +212,7 @@ gulp.task('watch', function() {
 });
 
 // Set production to true
-gulp.task('set-production', () => {
+gulp.task('set-production', function() {
   return config.production = true;
 });
 
