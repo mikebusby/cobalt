@@ -184,11 +184,18 @@ gulp.task('web-server', function() {
           next();
           return
         }
+
+        // if is a request for index in a folder
+        if (req.url.slice(-2).length > 1 && req.url.slice(-1) === '/') {
+          req.url = req.url + 'index';
+        }
+        
+        // if root page
         if (req.url === '/') {
           req.url = '/index';
-        }
-        const url = req.url + '.html';
-        req.url = url;
+        } 
+
+        req.url = req.url + '.html';
         next();
       },
       port: 1337,
