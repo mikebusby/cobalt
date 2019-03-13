@@ -269,16 +269,21 @@ gulp.task('bust', function() {
 });
 
 // Run dev tasks
-gulp.task('default', [
-  'svg-icons',
-  'html',
-  'css',
-  'scripts',
-  'copy-img',
-  'copy-favicon',
-  'watch',
-  'web-server'
-]);
+gulp.task('default', function(callback) {
+  runSequence(
+    'css',
+    'copy-img',
+    'svg-icons',
+    [
+      'html',
+      'scripts',
+      'copy-favicon'
+    ],
+    'watch',
+    'web-server',
+    callback
+  );
+});
 
 // Run production tasks
 gulp.task('production', function(callback) {
@@ -288,8 +293,8 @@ gulp.task('production', function(callback) {
     'css',
     'copy-img',
     'minify-img',
-    [
-      'svg-icons', 
+    'svg-icons',
+    [ 
       'html', 
       'scripts', 
       'copy-favicon', 
