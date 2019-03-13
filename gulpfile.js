@@ -15,40 +15,40 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 // Require Gulp, PostCSS plugins & load gulp plugins
-var gulp             = require('gulp');
-var path             = require('path');
-var replace          = require('gulp-replace');
-var argv             = require('yargs').argv
-var ftp              = require('vinyl-ftp');
-var postcssImport    = require('postcss-import');
-var postcssPresetEnv = require('postcss-preset-env');
-var postcssColorMod  = require('postcss-color-mod-function');
-var postcssNested    = require('postcss-nested');
-var mixins           = require('postcss-sassy-mixins');
-var conditionals     = require('postcss-conditionals')
-var postcssAssets    = require('postcss-assets');
-var easysprite       = require('postcss-easysprites');
-var rucksack         = require('rucksack-css');
-var cssnano          = require('cssnano');
-var mqpacker         = require('css-mqpacker');
-var gulpLoadPlugins  = require('gulp-load-plugins');
+const gulp             = require('gulp');
+const path             = require('path');
+const replace          = require('gulp-replace');
+const argv             = require('yargs').argv
+const ftp              = require('vinyl-ftp');
+const postcssImport    = require('postcss-import');
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssColorMod  = require('postcss-color-mod-function');
+const postcssNested    = require('postcss-nested');
+const mixins           = require('postcss-sassy-mixins');
+const conditionals     = require('postcss-conditionals')
+const postcssAssets    = require('postcss-assets');
+const easysprite       = require('postcss-easysprites');
+const rucksack         = require('rucksack-css');
+const cssnano          = require('cssnano');
+const mqpacker         = require('css-mqpacker');
+const gulpLoadPlugins  = require('gulp-load-plugins');
 
 // Include FTP config
-//var ftpConfig = require('./ftp-config.json');
+//const ftpConfig = require('./ftp-config.json');
 
 // Production plugins
-var del         = require('del');
-var runSequence = require('run-sequence');
+const del         = require('del');
+const runSequence = require('run-sequence');
 
 // Image optimization plugins
-var imagemin         = require('gulp-imagemin');
-var imageminPngquant = require('imagemin-pngquant');
-var imageminZopfli   = require('imagemin-zopfli');
-var imageminMozjpeg  = require('imagemin-mozjpeg');
-var imageminGiflossy = require('imagemin-giflossy');
+const imagemin         = require('gulp-imagemin');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminZopfli   = require('imagemin-zopfli');
+const imageminMozjpeg  = require('imagemin-mozjpeg');
+const imageminGiflossy = require('imagemin-giflossy');
 
 // Rename some plugins
-var plugins = gulpLoadPlugins({
+const plugins = gulpLoadPlugins({
   rename: { 
     'gulp-file-include': 'fileinclude',
     'gulp-if': 'gulpif'
@@ -56,7 +56,7 @@ var plugins = gulpLoadPlugins({
 });
 
 // Config variables
-var config = {
+let config = {
   srcPath:    'src/',
   buildPath:  'www/',
   staticPath: 'src/static/',
@@ -65,15 +65,15 @@ var config = {
 }
 
 // Datestamp for cache busting
-var getStamp = function () {
-  var date = new Date();
+const getStamp = function () {
+  const date = new Date();
 
-  var year = date.getFullYear().toString();
-  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-  var day = ('0' + date.getDate()).slice(-2);
-  var seconds = date.getSeconds().toString();
+  const year = date.getFullYear().toString();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const seconds = date.getSeconds().toString();
 
-  var timestamp = year + month + day + seconds;
+  const timestamp = year + month + day + seconds;
 
   return timestamp;
 };
@@ -145,10 +145,10 @@ gulp.task('scripts', function () {
 
 // Inline SVG icons
 gulp.task('svg-icons', function () {
-  var svgs = gulp
+  const svgs = gulp
     .src(config.staticPath + 'icons/*.svg')
     .pipe(plugins.svgmin(function(file) {
-      var prefix = path.basename(file.relative, path.extname(file.relative));
+      const prefix = path.basename(file.relative, path.extname(file.relative));
       return {
         plugins: [{
           cleanupIDs: {
@@ -314,10 +314,10 @@ gulp.task('production', function(callback) {
 
 // Gulp deployment task
 gulp.task('deploy', function () {
-  var ftpDest;
+  let ftpDest, conn;
 
   if (argv.env === 'production') {
-    var conn = ftp.create({
+    conn = ftp.create({
       host: ftpConfig.ftp.production.host,
       user: ftpConfig.ftp.production.user,
       password: ftpConfig.ftp.production.pass,
@@ -325,7 +325,7 @@ gulp.task('deploy', function () {
     });
     ftpDest = ftpConfig.ftp.production.dest;
   } else {
-    var conn = ftp.create({
+    conn = ftp.create({
       host: ftpConfig.ftp.staging.host,
       user: ftpConfig.ftp.staging.user,
       password: ftpConfig.ftp.staging.pass,
@@ -334,7 +334,7 @@ gulp.task('deploy', function () {
     ftpDest = ftpConfig.ftp.staging.dest;
   }
 
-  var globs = [
+  const globs = [
     'css/**',
     'img/**',
     'js/**',
