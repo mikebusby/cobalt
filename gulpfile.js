@@ -14,7 +14,7 @@
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
-// Require Gulp, PostCSS plugins & Load Gulp plugins
+// Require Gulp, PostCSS plugins & load gulp plugins
 var gulp             = require('gulp');
 var path             = require('path');
 var replace          = require('gulp-replace');
@@ -55,7 +55,7 @@ var plugins = gulpLoadPlugins({
   }
 });
 
-// Config Variables
+// Config variables
 var config = {
   srcPath:    'src/',
   buildPath:  'www/',
@@ -78,18 +78,30 @@ var getStamp = function () {
   return timestamp;
 };
 
-// HTML Compilation
+// HTML build
 gulp.task('html', function() {
-  return gulp.src([config.tplPath + '*.html'])
-    .pipe(plugins.fileinclude({
-      prefix: '@@',
-      basepath: '@file'
-    }))
-    .pipe(plugins.gulpif(config.production, plugins.htmlmin({collapseWhitespace: true})))
+  return gulp
+    .src([
+      config.tplPath + '**/*.html',
+      '!' + config.tplPath + '_**/_*/',
+      '!' + config.tplPath + '**/_*/**/*'
+    ])
+    .pipe(
+      plugins.fileinclude({
+        prefix: '@@',
+        basepath: 'src/tpl/'
+      })
+    )
+    .pipe(
+      plugins.gulpif(
+        config.production,
+        plugins.htmlmin({ collapseWhitespace: true })
+      )
+    )
     .pipe(gulp.dest(config.buildPath));
 });
 
-// CSS Build
+// CSS build
 gulp.task('css', function() {
   return gulp.src(config.srcPath + '/css/main.css')
     .pipe(plugins.postcss([
@@ -123,7 +135,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest(config.buildPath + 'css/'));
 });
 
-// JavaScript Taks
+// JavaScript build
 gulp.task('scripts', function () {
   return gulp.src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
     .pipe(plugins.gulpif(config.production, plugins.uglify()))
@@ -131,7 +143,7 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(config.buildPath + 'js'));
 });
 
-// Inline SVG Icons
+// Inline SVG icons
 gulp.task('svg-icons', function () {
   var svgs = gulp
     .src(config.staticPath + 'icons/*.svg')
@@ -158,7 +170,7 @@ gulp.task('svg-icons', function () {
     .pipe(gulp.dest(config.staticPath + 'icons/'));
 });
 
-// Web Server
+// Web server
 gulp.task('web-server', function() {
   gulp.src(config.buildPath)
     .pipe(plugins.webserver({
@@ -184,19 +196,19 @@ gulp.task('web-server', function() {
     }));
 });
 
-// Move Images to Build
+// Move images to build
 gulp.task('copy-img', function () {
   return gulp.src(config.staticPath + '/img/*')
     .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
-// Move Favicon to Build
+// Move favicon to build
 gulp.task('copy-favicon', function () {
   return gulp.src(config.staticPath + '/favicon/favicon.ico')
     .pipe(gulp.dest(config.buildPath));
 });
 
-// Watch File Changes
+// Watch file changes
 gulp.task('watch', function() {
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
@@ -221,7 +233,7 @@ gulp.task('copy-htaccess', function () {
     .pipe(gulp.dest(config.buildPath));
 });
 
-// Minify Images | PRODUCTION ONLY
+// Minify images | PRODUCTION ONLY
 gulp.task('minify-img', function() {
   return gulp.src(config.buildPath + '/img/*')
     .pipe(imagemin([
@@ -247,7 +259,7 @@ gulp.task('minify-img', function() {
     .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
-// Cache Bust | PRODUCTION ONLY
+// Cache bust | PRODUCTION ONLY
 gulp.task('bust', function() {
   return gulp.src(config.buildPath + '**/*.html')
     .pipe(replace(/main.css([0-9]*)/g, 'main.css?' + getStamp()))
@@ -256,37 +268,39 @@ gulp.task('bust', function() {
     .pipe(gulp.dest(config.buildPath));
 });
 
-// Run Tasks | $ gulp
+// Run dev tasks
 gulp.task('default', [
+  'svg-icons',
   'html',
   'css',
   'scripts',
-  'svg-icons',
   'copy-img',
   'copy-favicon',
   'watch',
   'web-server'
 ]);
 
-// Run Tasks | $ gulp production
+// Run production tasks
 gulp.task('production', function(callback) {
   runSequence(
     'set-production',
     'clean-build',
-    'css',     
+    'css',
     'copy-img',
     'minify-img',
     [
+      'svg-icons', 
       'html', 
       'scripts', 
-      'svg-icons', 
       'copy-favicon', 
       'copy-htaccess'
     ],
     'bust',
-    callback);
+    callback
+  );
 });
 
+// Gulp deployment task
 gulp.task('deploy', function () {
   var ftpDest;
 
