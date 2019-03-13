@@ -1,0 +1,16 @@
+{
+  "ftp": {
+    "staging": {
+      "host": "ftp.domain.com",
+      "user": "username",
+      "pass": "password",
+      "dest": "/"
+    },
+    "production": {
+      "host": "ftp.domain.com",
+      "user": "username",
+      "pass": "password",
+      "dest": "/public_html"
+    }
+  }
+}

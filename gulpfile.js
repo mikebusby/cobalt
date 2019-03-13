@@ -18,6 +18,8 @@
 var gulp             = require('gulp');
 var path             = require('path');
 var replace          = require('gulp-replace');
+var argv             = require('yargs').argv
+var ftp              = require('vinyl-ftp');
 var postcssImport    = require('postcss-import');
 var postcssPresetEnv = require('postcss-preset-env');
 var postcssColorMod  = require('postcss-color-mod-function');
@@ -31,6 +33,9 @@ var cssnano          = require('cssnano');
 var mqpacker         = require('css-mqpacker');
 var gulpLoadPlugins  = require('gulp-load-plugins');
 
+// Include FTP config
+//var ftpConfig = require('./ftp-config.json');
+
 // Production plugins
 var del         = require('del');
 var runSequence = require('run-sequence');
@@ -41,9 +46,6 @@ var imageminPngquant = require('imagemin-pngquant');
 var imageminZopfli   = require('imagemin-zopfli');
 var imageminMozjpeg  = require('imagemin-mozjpeg');
 var imageminGiflossy = require('imagemin-giflossy');
-
-// Development development plugins
-var ftp = require('vinyl-ftp');
 
 // Rename some plugins
 var plugins = gulpLoadPlugins({
@@ -60,14 +62,6 @@ var config = {
   staticPath: 'src/static/',
   tplPath:    'src/tpl/',
   production: false
-}
-
-// FTP Config
-var ftpConfig = {
-  host:     '',
-  user:     '',
-  password: '',
-  parallel: 10
 }
 
 // Datestamp for cache busting
@@ -138,7 +132,7 @@ gulp.task('scripts', function () {
 });
 
 // Inline SVG Icons
-gulp.task('svgicons', function () {
+gulp.task('svg-icons', function () {
   var svgs = gulp
     .src(config.staticPath + 'icons/*.svg')
     .pipe(plugins.svgmin(function(file) {
@@ -165,7 +159,7 @@ gulp.task('svgicons', function () {
 });
 
 // Web Server
-gulp.task('webserver', function() {
+gulp.task('web-server', function() {
   gulp.src(config.buildPath)
     .pipe(plugins.webserver({
       middleware: function (req, res, next) {
@@ -191,13 +185,13 @@ gulp.task('webserver', function() {
 });
 
 // Move Images to Build
-gulp.task('copyimg', function () {
+gulp.task('copy-img', function () {
   return gulp.src(config.staticPath + '/img/*')
     .pipe(gulp.dest(config.buildPath + 'img/'));
 });
 
 // Move Favicon to Build
-gulp.task('copyfavicon', function () {
+gulp.task('copy-favicon', function () {
   return gulp.src(config.staticPath + '/favicon/favicon.ico')
     .pipe(gulp.dest(config.buildPath));
 });
@@ -207,8 +201,8 @@ gulp.task('watch', function() {
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.css', ['css']);
   gulp.watch(config.srcPath + 'js/**/*.js', ['scripts']);
-  gulp.watch(config.staticPath + 'img/*.png', ['copyimg']);
-  gulp.watch(config.staticPath + 'icons/*.svg', ['svgicons']);
+  gulp.watch(config.staticPath + 'img/*.png', ['copy-img']);
+  gulp.watch(config.staticPath + 'icons/*.svg', ['svg-icons']);
 });
 
 // Set production to true
@@ -222,13 +216,13 @@ gulp.task('clean-build', function() {
 });
 
 // Move sever side .htaccess file to remove .html extensions | PRODUCTION ONLY
-gulp.task('copyhtaccess', function () {
+gulp.task('copy-htaccess', function () {
   gulp.src(config.srcPath + '.htaccess')
     .pipe(gulp.dest(config.buildPath));
 });
 
 // Minify Images | PRODUCTION ONLY
-gulp.task('minifyimg', function() {
+gulp.task('minify-img', function() {
   return gulp.src(config.buildPath + '/img/*')
     .pipe(imagemin([
       imageminPngquant({
@@ -267,11 +261,11 @@ gulp.task('default', [
   'html',
   'css',
   'scripts',
-  'svgicons',
-  'copyimg',
-  'copyfavicon',
+  'svg-icons',
+  'copy-img',
+  'copy-favicon',
   'watch',
-  'webserver'
+  'web-server'
 ]);
 
 // Run Tasks | $ gulp production
@@ -280,9 +274,15 @@ gulp.task('production', function(callback) {
     'set-production',
     'clean-build',
     'css',     
-    'copyimg',
-    'minifyimg',
-    ['html', 'scripts', 'svgicons', 'copyfavicon', 'copyhtaccess'],
+    'copy-img',
+    'minify-img',
+    [
+      'html', 
+      'scripts', 
+      'svg-icons', 
+      'copy-favicon', 
+      'copy-htaccess'
+    ],
     'bust',
     callback);
 });
@@ -308,4 +308,43 @@ gulp.task('deploy', function () {
 
   return gulp.src(globs, { base: './www', cwd: './www', buffer: false })
     .pipe(conn.dest('/'));
+});
+
+gulp.task('deploy', function () {
+  var ftpDest;
+
+  if (argv.env === 'production') {
+    var conn = ftp.create({
+      host: ftpConfig.ftp.production.host,
+      user: ftpConfig.ftp.production.user,
+      password: ftpConfig.ftp.production.pass,
+      parallel: 10
+    });
+    ftpDest = ftpConfig.ftp.production.dest;
+  } else {
+    var conn = ftp.create({
+      host: ftpConfig.ftp.staging.host,
+      user: ftpConfig.ftp.staging.user,
+      password: ftpConfig.ftp.staging.pass,
+      parallel: 10
+    });
+    ftpDest = ftpConfig.ftp.staging.dest;
+  }
+
+  var globs = [
+    'css/**',
+    'img/**',
+    'js/**',
+    'fonts/**',
+    'favicon.ico',
+    '.htaccess',
+    '**/*.html'
+  ];
+
+  return gulp.src(globs, {
+    base: './www',
+    cwd: './www',
+    buffer: false
+  })
+    .pipe(conn.dest(ftpDest));
 });

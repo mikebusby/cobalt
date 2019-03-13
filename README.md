@@ -4,24 +4,24 @@ Cobalt is a simple build framework for building static projects. Built by @MikeB
 
 ## Using
 
-Gulp  
-PostCSS  
-PostCSS Assets  
-PostCSS Easy sprite  
-CSS Next  
-Rucksack CSS  
-CSS Nano  
-Media Query Packer  
+ - Gulp  
+ - PostCSS  
+ - PostCSS Assets  
+ - PostCSS Easy sprite  
+ - CSS Next  
+ - Rucksack CSS  
+ - CSS Nano  
+ - Media Query Packer  
 
 PostCSS SCSS like plugins:  
-  Import  
-  Nested  
-  Mixins  
-  Conditionals  
+ - Import  
+ - Nested  
+ - Mixins  
+ - Conditionals  
 
 ## Installation
 
-Node & NPM or Yarn need to be installed.
+Node & Yarn need to be installed.
 
 ## Examples
 
@@ -46,9 +46,19 @@ Node & NPM or Yarn need to be installed.
 
 ```yarn install```
 
-Then simply run ```gulp``` and navigate to ```http://localhost:1337```
+Then simply run ```yarn run dev``` and navigate to ```http://localhost:1337```
 
-For a **production ready build** run ```gulp production```
+For a production ready build run ```yarn run production-build```
+
+## FTP Deployment
+
+Copy ftp-config.json.example, remove the .example extension and add your server credentials. Then uncomment line in gulpfile. For security reasons you should not commit the FTP config file. 
+
+Make sure to run ```yarn run production-build``` first then...
+
+For staging ```yarn run deploy-staging```
+
+For production ```yarn run deploy-production```
 
 ## License
 
