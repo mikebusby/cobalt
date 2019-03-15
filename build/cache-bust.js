@@ -6,19 +6,13 @@ module.exports = function(gulp, plugins, config) {
   return function() {
     function getStamp() {
       const date = new Date();
-
-      const year = date.getFullYear().toString();
-      const month = ('0' + (date.getMonth() + 1)).slice(-2);
-      const day = ('0' + date.getDate()).slice(-2);
-      const seconds = date.getSeconds().toString();
-
-      const timestamp = year + month + day + seconds;
-
-      return timestamp;
+      return date.getFullYear().toString() +
+        ('0' + (date.getMonth() + 1)).slice(-2) +
+        ('0' + date.getDate()).slice(-2) +
+        date.getSeconds().toString();
     };
 
-    gulp
-      .src(config.buildPath + '**/*.html')
+    gulp.src(config.buildPath + '**/*.html')
       .pipe(
         plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
       )

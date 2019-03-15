@@ -34,7 +34,6 @@ module.exports = function(gulp) {
       'css/**',
       'img/**',
       'js/**',
-      'fonts/**',
       'favicon.ico',
       '.htaccess',
       '**/*.html'
