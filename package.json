@@ -16,8 +16,8 @@
   "devDependencies": {
     "css-mqpacker": "^6.0.1",
     "cssnano": "^4.0.1",
-    "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.0.1",
     "gulp-htmlmin": "^4.0.0",

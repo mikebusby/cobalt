@@ -52,7 +52,7 @@ For a production ready build run ```yarn run production-build```
 
 ## FTP Deployment
 
-Copy ftp-config.json.example, remove the .example extension and add your server credentials. Then uncomment line in gulpfile. For security reasons you should not commit the FTP config file. 
+Copy ftp-config.json.example, remove the .example extension and add your server credentials. Then uncomment task in gulpfile. For security reasons you should not commit the FTP config file. 
 
 Make sure to run ```yarn run production-build``` first then...
 

@@ -1,0 +1,9 @@
+# AuthType Basic
+# AuthName "USERNAME"
+# AuthUserFile "/home/bddev/.htpasswds/public_html/USERNAME/passwd"
+# require valid-user
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
