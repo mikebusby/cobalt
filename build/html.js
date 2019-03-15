@@ -2,6 +2,9 @@
 // HTML build task
 //
 
+const fileinclude = require('gulp-file-include');
+const gulpif = require('gulp-if');
+
 module.exports = function(gulp, plugins, config) {
   return function() {
     gulp.src([
@@ -10,13 +13,13 @@ module.exports = function(gulp, plugins, config) {
         '!' + config.tplPath + '**/_*/**/*'
       ])
       .pipe(
-        plugins.fileinclude({
+        fileinclude({
           prefix: '@@',
           basepath: 'src/tpl/'
         })
       )
       .pipe(
-        plugins.gulpif(
+        gulpif(
           config.production,
           plugins.htmlmin({ collapseWhitespace: true })
         )

@@ -13,14 +13,7 @@
 
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
-
-// Load Plugins
-const plugins = require('gulp-load-plugins')({
-  rename: {
-    'gulp-file-include': 'fileinclude',
-    'gulp-if': 'gulpif'
-  }
-});
+const plugins = require('gulp-load-plugins')();
 
 // Config variables
 let config = {
