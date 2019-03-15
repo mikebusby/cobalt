@@ -4,6 +4,7 @@
 
 const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
+const dom = require('gulp-dom');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
@@ -22,6 +23,14 @@ module.exports = function(gulp, plugins, config) {
         gulpif(
           config.production,
           plugins.htmlmin({ collapseWhitespace: true })
+        )
+      )
+      .pipe(
+        gulpif(
+          !config.production,
+          dom(function() {
+            return this.querySelectorAll('body')[0].classList.add('bp-tester');
+          })
         )
       )
       .pipe(gulp.dest(config.buildPath));

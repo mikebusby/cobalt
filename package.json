@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "gulp",
-    "production-build": "gulp production",
+    "build-production": "gulp production",
     "deploy-staging": "gulp deploy",
     "deploy-production": "gulp deploy --env=production"
   },
@@ -19,6 +19,7 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
+    "gulp-dom": "^1.0.0",
     "gulp-file-include": "^2.0.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-if": "^2.0.2",

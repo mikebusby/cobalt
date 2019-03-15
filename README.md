@@ -48,13 +48,13 @@ Node & Yarn need to be installed.
 
 Then simply run ```yarn run dev``` and navigate to ```http://localhost:1337```
 
-For a production ready build run ```yarn run production-build```
+For a production ready build run ```yarn run build-production```
 
 ## FTP Deployment
 
 Copy ftp-config.json.example, remove the .example extension and add your server credentials. Then uncomment task in gulpfile. For security reasons you should not commit the FTP config file. 
 
-Make sure to run ```yarn run production-build``` first then...
+Make sure to run ```yarn run build-production``` first then...
 
 For staging ```yarn run deploy-staging```
 
