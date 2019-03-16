@@ -1,3 +1,5 @@
+![](http://assets.busby.design/img/cobalt-logo.png =351x99)
+
 # Cobalt Build Framework
 
 Cobalt is a simple build framework for building static projects. Built by @MikeBusby
@@ -21,7 +23,7 @@ PostCSS SCSS like plugins:
 
 ## Installation
 
-Node & Yarn need to be installed.
+Node & Yarn need to be installed
 
 ## Examples
 
@@ -52,7 +54,7 @@ For a production ready build run ```yarn run build-production```
 
 ## FTP Deployment
 
-Copy ftp-config.json.example, remove the .example extension and add your server credentials. Then uncomment task in gulpfile. For security reasons you should not commit the FTP config file. 
+Copy ftp-config.json.example, remove the .example extension and add your server credentials. For security reasons you should not commit the FTP config file. 
 
 Make sure to run ```yarn run build-production``` first then...
 
