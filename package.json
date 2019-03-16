@@ -15,7 +15,7 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.0.1",
+    "cssnano": "^4.1.10",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
