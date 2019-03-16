@@ -43,7 +43,7 @@ gulp.task('copy', [
 ]);
 
 // Watch file changes
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   gulp.watch(config.tplPath + '**/*.html', ['html']);
   gulp.watch(config.srcPath + 'css/**/*.' + config.cssType, ['styles']);
   gulp.watch(config.srcPath + 'js/**/*.js', ['scripts']);
@@ -52,7 +52,7 @@ gulp.task('watch', function () {
 });
 
 // Run development tasks
-gulp.task('default', function (callback) {
+gulp.task('default', function(callback) {
   runSequence(
     'styles',
     'copy',
@@ -66,13 +66,13 @@ gulp.task('default', function (callback) {
 });
 
 // Production tasks
-gulp.task('set-production', function () { return config.production = true; });
+gulp.task('set-production', function() { return config.production = true; });
 gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
 gulp.task('minify-img', require('./build/minify-img')(gulp, config));
 gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
 
 // Run production tasks
-gulp.task('production', function (callback) {
+gulp.task('production', function(callback) {
   runSequence(
     'set-production',
     'clean-build',
