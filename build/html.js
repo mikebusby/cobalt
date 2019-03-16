@@ -13,6 +13,14 @@ module.exports = function(gulp, plugins, config) {
         '!' + config.tplPath + '_**/_*/',
         '!' + config.tplPath + '**/_*/**/*'
       ])
+      .pipe(plugins.plumber({
+        errorHandler: function(err) {
+          plugins.notify.onError({
+            title: 'Gulp error in ' + err.plugin,
+            message: err.toString()
+          })(err);
+        }
+      }))
       .pipe(
         fileinclude({
           prefix: '@@',
