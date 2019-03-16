@@ -1,4 +1,4 @@
-![](http://assets.busby.design/img/cobalt-logo.png =351x99)
+<img src="http://assets.busby.design/img/cobalt-logo.png" width="351" height="99">
 
 # Cobalt Build Framework
 
