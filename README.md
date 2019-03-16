@@ -48,15 +48,13 @@ Node & Yarn need to be installed
 
 ```yarn install```
 
-Then simply run ```yarn run dev``` and navigate to ```http://localhost:1337```
+Run ```yarn run dev``` and navigate to ```http://localhost:1337```
 
 For a production ready build run ```yarn run build-production```
 
 ## FTP Deployment
 
-Copy ftp-config.json.example, remove the .example extension and add your server credentials. For security reasons you should not commit the FTP config file. 
-
-Make sure to run ```yarn run build-production``` first then...
+Copy ftp-config.json.example, remove the .example extension and add your server credentials. For security reasons you should not commit the FTP config file. It will be excluded from the repo automaticaly. Make sure to run ```yarn run build-production``` before deloying to a server.
 
 For staging ```yarn run deploy-staging```
 
