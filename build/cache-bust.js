@@ -12,7 +12,8 @@ module.exports = function(gulp, plugins, config) {
         date.getSeconds().toString();
     };
 
-    return gulp.src(config.buildPath + '**/*.html')
+    return gulp
+      .src(config.buildPath + '**/*.html')
       .pipe(
         plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
       )

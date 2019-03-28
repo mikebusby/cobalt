@@ -4,7 +4,8 @@
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    gulp.src(config.buildPath)
+    gulp
+      .src(config.buildPath)
       .pipe(plugins.webserver({
         middleware: function (req, res, next) {
           if (

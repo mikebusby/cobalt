@@ -6,7 +6,8 @@ const gulpif = require('gulp-if');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    gulp.src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
+    return gulp
+      .src([config.srcPath + 'js/**/*.js', !config.srcPath + 'www/js/*.min.js'])
       .pipe(plugins.plumber({
         errorHandler: function(err) {
           plugins.notify.onError({

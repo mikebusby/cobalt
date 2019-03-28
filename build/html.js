@@ -8,7 +8,8 @@ const dom = require('gulp-dom');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    return gulp.src([
+    return gulp
+      .src([
         config.tplPath + '**/*.html',
         '!' + config.tplPath + '_**/_*/',
         '!' + config.tplPath + '**/_*/**/*'

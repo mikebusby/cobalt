@@ -11,7 +11,8 @@
 
 module.exports = function (gulp, plugins, config) {
   return function() {
-    gulp.src(config.srcPath + '/css/main.scss')
+    return gulp
+      .src(config.srcPath + '/css/main.scss')
       .pipe(plugins.plumber({
         errorHandler: function (err) {
           plugins.notify.onError({

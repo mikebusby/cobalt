@@ -17,7 +17,8 @@ const mqpacker = require('css-mqpacker');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    gulp.src(config.srcPath + '/css/main.css')
+    return gulp
+      .src(config.srcPath + '/css/main.css')
       .pipe(plugins.plumber({
         errorHandler: function(err) {
           plugins.notify.onError({

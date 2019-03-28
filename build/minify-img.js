@@ -11,7 +11,8 @@ const imageminGiflossy = require('imagemin-giflossy');
 
 module.exports = function(gulp, config) {
   return function() {
-    return gulp.src(config.buildPath + '/img/*')
+    return gulp
+      .src(config.buildPath + '/img/*')
       .pipe(imagemin([
         imageminPngquant({
           speed: 1,
