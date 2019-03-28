@@ -4,8 +4,8 @@
 
 // Include plugins
 const argv = require('yargs').argv
-const ftp  = require('vinyl-ftp');
-const fs   = require('fs');
+const ftp = require('vinyl-ftp');
+const fs = require('fs');
 
 module.exports = function(gulp) {
   return function() {

@@ -3,7 +3,7 @@
 //
 
 module.exports = function(gulp, plugins, config) {
-  return function () {
+  return function() {
     gulp.src(config.buildPath)
       .pipe(plugins.webserver({
         middleware: function (req, res, next) {

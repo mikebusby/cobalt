@@ -3,17 +3,17 @@
 //
 
 // Include PostCSS plugins
-const postcssImport    = require('postcss-import');
+const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
-const postcssColorMod  = require('postcss-color-mod-function');
-const postcssNested    = require('postcss-nested');
-const mixins           = require('postcss-sassy-mixins');
-const conditionals     = require('postcss-conditionals')
-const postcssAssets    = require('postcss-assets');
-const easysprite       = require('postcss-easysprites');
-const rucksack         = require('rucksack-css');
-const cssnano          = require('cssnano');
-const mqpacker         = require('css-mqpacker');
+const postcssColorMod = require('postcss-color-mod-function');
+const postcssNested = require('postcss-nested');
+const mixins = require('postcss-sassy-mixins');
+const conditionals = require('postcss-conditionals')
+const postcssAssets = require('postcss-assets');
+const easysprite = require('postcss-easysprites');
+const rucksack = require('rucksack-css');
+const cssnano = require('cssnano');
+const mqpacker = require('css-mqpacker');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
