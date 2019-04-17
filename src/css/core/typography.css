@@ -69,11 +69,11 @@
   font-weight: var(--light-font-weight);
 }
 
-.h-semibold-text-weight {
+.h-semibold-font-weight {
   font-weight: var(--semibold-font-weight);
 }
 
-.h-bold-text-weight {
+.h-bold-font-weight {
   font-weight: var(--bold-font-weight);
 }
 
