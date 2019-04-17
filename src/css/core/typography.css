@@ -63,9 +63,9 @@
 
 
 //
-// Text Weights
+// Font Weights
 //
-.h-light-text-weight {
+.h-light-font-weight {
   font-weight: var(--light-font-weight);
 }
 
