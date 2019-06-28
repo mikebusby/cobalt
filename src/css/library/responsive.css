@@ -5,24 +5,6 @@
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
-@custom-media --xxl-bp (max-width: 1440px);
-@custom-media --xl-bp  (max-width: 1200px);
-@custom-media --l-bp   (max-width: 992px);
-@custom-media --m-bp   (max-width: 768px);
-@custom-media --s-bp   (max-width: 580px);
-@custom-media --xs-bp  (max-width: 480px);
-@custom-media --xxs-bp (max-width: 380px);
-
-@custom-media --xxl-min-bp (min-width: 1440px);
-@custom-media --xl-min-bp  (min-width: 1200px);
-@custom-media --l-min-bp   (min-width: 992px);
-@custom-media --m-min-bp   (min-width: 768px);
-@custom-media --s-min-bp   (min-width: 580px);
-@custom-media --xs-min-bp  (min-width: 480px);
-@custom-media --xxs-min-bp (min-width: 380px);
-
-
-
 //
 // Mobile & Desktop Hide Helpers
 //
@@ -33,3 +15,14 @@
 .h-s-hide   { @media (--s-bp) { display: none; }}
 .h-xs-hide  { @media (--xs-bp) { display: none; }}
 .h-xxs-hide { @media (--xxs-bp) { display: none; }}
+
+
+//
+// For SCSS
+//
+// .h-xl-hide  { @include bp(xl) { display: none !important; }}
+// .h-l-hide   { @include bp(l) { display: none !important; }}
+// .h-m-hide   { @include bp(m) { display: none !important; }}
+// .h-s-hide   { @include bp(s) { display: none !important; }}
+// .h-xs-hide  { @include bp(xs) { display: none !important; }}
+// .h-xxs-hide { @include bp(xxs) { display: none !important; }}

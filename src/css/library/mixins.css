@@ -43,3 +43,30 @@
   width: $size;
   height: $size;
 }
+
+
+
+//
+// Responsive Breakpoint (SCSS Only)
+//
+@mixin bp($size) {
+
+  @if ($size == xl) {
+    @media (min-width: $xl-screen) { @content }
+  } @else if ($size == lg) {
+    @media (max-width: $xl-screen - 1) { @content }
+  } @else if ($size == md) {
+    @media (max-width: $lg-screen - 1) { @content }
+  } @else if ($size == sm) {
+    @media (max-width: $md-screen - 1) { @content }
+  } @else if ($size == xs-plus) {
+    @media (max-width: $xs-plus-screen - 1) { @content }
+  } @else if ($size == xs) {
+    @media (max-width: $sm-screen - 1) { @content }
+  } @else if ($size == xxs) {
+    @media (max-width: $xs-screen - 1) { @content }
+  } @else {
+    @media (max-width: $size) { @content }
+  }
+
+} // bp()

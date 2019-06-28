@@ -39,4 +39,39 @@
   --small-wrapper:                         940px;
 
   --mobile-edge:                           20px;
+
+  --transition-default:                    200ms;
 }
+
+
+
+//
+// PostCSS Responsive Queries
+//
+@custom-media --xxl-bp (max-width: 1440px);
+@custom-media --xl-bp  (max-width: 1200px);
+@custom-media --l-bp   (max-width: 992px);
+@custom-media --m-bp   (max-width: 768px);
+@custom-media --s-bp   (max-width: 580px);
+@custom-media --xs-bp  (max-width: 480px);
+@custom-media --xxs-bp (max-width: 380px);
+
+@custom-media --xxl-min-bp (min-width: 1440px);
+@custom-media --xl-min-bp  (min-width: 1200px);
+@custom-media --l-min-bp   (min-width: 992px);
+@custom-media --m-min-bp   (min-width: 768px);
+@custom-media --s-min-bp   (min-width: 580px);
+@custom-media --xs-min-bp  (min-width: 480px);
+@custom-media --xxs-min-bp (min-width: 380px);
+
+
+
+//
+// For SCSS
+//
+// $xxs-screen:                            380px !default;
+// $xs-screen:                             480px !default;
+// $sm-screen:                             768px !default;
+// $md-screen:                             992px !default;
+// $lg-screen:                             1200px !default;
+// $xl-screen:                             1440px !default;

@@ -48,4 +48,37 @@
     content: "XXS - Min 380";
   }
 
+
+  //
+  // For SCSS
+  //
+  // @include bp(xxl) {
+  //   background: red;
+  //   content: "XXL - Min 1200 · Max 1440";
+  // }
+  // @include bp(xl) {
+  //   background: orange;
+  //   content: "XL - Min 992 · Max 1200";
+  // }
+  // @include bp(l) {
+  //   background: goldenrod;
+  //   content: "L - Min 768 · Max 992";
+  // }
+  // @include bp(m) {
+  //   background: green;
+  //   content: "M - Min 580 · Max 768";
+  // }
+  // @include bp(s) {
+  //   background: blue;
+  //   content: "S - Min 480 · Max 580";
+  // }
+  // @include bp(xs) {
+  //   background: purple;
+  //   content: "XS - Min 380 · Max 480";
+  // }
+  // @include bp(xxs) {
+  //   background: fuchsia;
+  //   content: "XXS - Min 380";
+  // }
+
 } // bp-tester

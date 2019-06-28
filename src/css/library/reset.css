@@ -77,5 +77,5 @@ a {
 }
 
 svg {
-	transition: color 200ms, fill 200ms;
+	transition: color var(--transition-default), fill var(--transition-default);
 }

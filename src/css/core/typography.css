@@ -42,22 +42,22 @@
 //
 .h-small-text {
   font-size: 12px;
-  line-height: 22px;
+  line-height: 18px;
 }
 
 .h-medium-text {
   font-size: 14px;
-  line-height: 24px;
+  line-height: 22px;
 }
 
 .h-default-text {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
 }
 
 .h-large-text {
   font-size: 18px;
-  line-height: 28px;
+  line-height: 26px;
 }
 
 
