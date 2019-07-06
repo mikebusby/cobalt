@@ -73,7 +73,8 @@ input:-webkit-autofill {
 
 a {
   text-decoration: none;
-  color: var(--link-color);
+	color: var(--link-color);
+	transition: color var(--transition-default);
 }
 
 svg {

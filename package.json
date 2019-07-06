@@ -51,6 +51,11 @@
     "vinyl-ftp": "^0.6.1",
     "yargs": "^13.2.2"
   },
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "not ie <= 11"
+  ],
   "author": "Mike Busby (@MikeBusby)",
   "license": "MIT"
 }

@@ -53,16 +53,14 @@
 
   @if ($size == xl) {
     @media (min-width: $xl-screen) { @content }
-  } @else if ($size == lg) {
+  } @else if ($size == l) {
     @media (max-width: $xl-screen - 1) { @content }
-  } @else if ($size == md) {
-    @media (max-width: $lg-screen - 1) { @content }
-  } @else if ($size == sm) {
-    @media (max-width: $md-screen - 1) { @content }
-  } @else if ($size == xs-plus) {
-    @media (max-width: $xs-plus-screen - 1) { @content }
+  } @else if ($size == m) {
+    @media (max-width: $l-screen - 1) { @content }
+  } @else if ($size == s) {
+    @media (max-width: $m-screen - 1) { @content }
   } @else if ($size == xs) {
-    @media (max-width: $sm-screen - 1) { @content }
+    @media (max-width: $s-screen - 1) { @content }
   } @else if ($size == xxs) {
     @media (max-width: $xs-screen - 1) { @content }
   } @else {

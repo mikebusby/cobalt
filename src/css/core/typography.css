@@ -40,12 +40,12 @@
 //
 // Body Copy sizes
 //
-.h-small-text {
+.h-xs-text {
   font-size: 12px;
   line-height: 18px;
 }
 
-.h-medium-text {
+.h-small-text {
   font-size: 14px;
   line-height: 22px;
 }
@@ -58,6 +58,11 @@
 .h-large-text {
   font-size: 18px;
   line-height: 26px;
+}
+
+.h-xl-tet {
+  font-size: 20px;
+  line-height: 28px;
 }
 
 
@@ -100,4 +105,17 @@
 
 .h-primary-text-color {
   color: var(--primary-brand);
+}
+
+
+
+//
+// Links
+//
+.h-dark-primary-link {
+  color: var(--dark-text-color);
+
+  &:hover {
+    color: var(--primary-brand);
+  }
 }

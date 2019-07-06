@@ -25,7 +25,6 @@ module.exports = function (gulp, plugins, config) {
         outputStyle: 'compressed'
       }))
       .pipe(plugins.autoprefixer({
-        overrideBrowserslist: ['last 3 versions'],
         cascade: false
       }))
       .pipe(gulp.dest(config.buildPath + 'css/'));

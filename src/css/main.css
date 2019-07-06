@@ -21,3 +21,7 @@
 @import 'core/base';
 @import 'core/typography';
 @import 'core/layout';
+
+
+// Component Imports
+@import 'components/icons';
