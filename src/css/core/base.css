@@ -13,7 +13,6 @@ body {
   line-height: 1.5em;
   font-family: var(--font-family);
   color: var(--dark-text-color);
-  appearance: none;
 
   &.no-scroll {
     overflow: hidden;

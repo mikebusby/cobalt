@@ -11,13 +11,10 @@
   margin: 0 auto;
   padding-left: var(--mobile-edge);
   padding-right: var(--mobile-edge);
+  max-width: var(--standard-wrapper);
 
   &--large {
     max-width: var(--large-wrapper);
-  }
-
-  &--standard {
-    max-width: var(--standard-wrapper);
   }
 
   &--small {
