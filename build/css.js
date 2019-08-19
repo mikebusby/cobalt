@@ -17,8 +17,8 @@ const mqpacker = require('css-mqpacker');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    return gulp
-      .src(config.srcPath + '/css/main.css')
+    const stream =
+      gulp.src(config.srcPath + '/css/main.css')
       .pipe(plugins.plumber({
         errorHandler: function(err) {
           plugins.notify.onError({
@@ -56,5 +56,7 @@ module.exports = function(gulp, plugins, config) {
         })
       ], { syntax: require('postcss-scss') }))
       .pipe(gulp.dest(config.buildPath + 'css/'));
+
+    return stream;
   }
 }

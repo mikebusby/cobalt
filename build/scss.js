@@ -11,22 +11,24 @@
 
 module.exports = function (gulp, plugins, config) {
   return function() {
-    return gulp
-      .src(config.srcPath + '/css/main.scss')
-      .pipe(plugins.plumber({
-        errorHandler: function (err) {
-          plugins.notify.onError({
-            title: 'Gulp error in ' + err.plugin,
-            message: err.toString()
-          })(err);
-        }
-      }))
-      .pipe(plugins.sass({
-        outputStyle: 'compressed'
-      }))
-      .pipe(plugins.autoprefixer({
-        cascade: false
-      }))
-      .pipe(gulp.dest(config.buildPath + 'css/'));
+    const stream =
+      gulp.src(config.srcPath + '/css/main.scss')
+        .pipe(plugins.plumber({
+          errorHandler: function (err) {
+            plugins.notify.onError({
+              title: 'Gulp error in ' + err.plugin,
+              message: err.toString()
+            })(err);
+          }
+        }))
+        .pipe(plugins.sass({
+          outputStyle: 'compressed'
+        }))
+        .pipe(plugins.autoprefixer({
+          cascade: false
+        }))
+        .pipe(gulp.dest(config.buildPath + 'css/'));
+
+    return stream;
   }
 }

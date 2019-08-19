@@ -12,7 +12,6 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 const plugins = require('gulp-load-plugins')();
 
 // Config variables
@@ -36,56 +35,50 @@ gulp.task('web-server', require('./build/server')(gulp, plugins, config));
 gulp.task('copy-img', require('./build/copy/images')(gulp, config));
 gulp.task('copy-favicon', require('./build/copy/favicon')(gulp, config));
 gulp.task('copy-htaccess', require('./build/copy/htaccess')(gulp, config));
-gulp.task('copy', [
+gulp.task('copy', gulp.series(
   'copy-img',
   'copy-favicon',
   'copy-htaccess'
-]);
+));
 
 // Watch file changes
 gulp.task('watch', function() {
-  gulp.watch(config.tplPath + '**/*.html', ['html']);
-  gulp.watch(config.srcPath + 'css/**/*.' + config.cssType, ['styles']);
-  gulp.watch(config.srcPath + 'js/**/*.js', ['scripts']);
-  gulp.watch(config.staticPath + 'img/*', ['copy-img']);
-  gulp.watch(config.staticPath + 'icons/*.svg', ['svg-icons']);
+  gulp.watch(config.tplPath + '**/*.html', gulp.series('html'));
+  gulp.watch(config.srcPath + 'css/**/*.' + config.cssType, gulp.series('styles'));
+  gulp.watch(config.srcPath + 'js/**/*.js', gulp.series('scripts'));
+  gulp.watch(config.staticPath + 'img/*', gulp.series('copy-img'));
+  gulp.watch(config.staticPath + 'icons/*.svg', gulp.series('svg-icons'));
 });
+
+// Run build tasks
+gulp.task('default', gulp.series(
+  'styles',
+  'copy',
+  'svg-icons',
+  'html',
+  'scripts'
+));
 
 // Run development tasks
-gulp.task('default', function(callback) {
-  runSequence(
-    'styles',
-    'copy',
-    'svg-icons',
-    'html',
-    'scripts',
-    'watch',
-    'web-server',
-    callback
-  );
-});
+gulp.task('dev', gulp.parallel(
+  'web-server',
+  'watch'
+))
 
-// Production tasks
-gulp.task('set-production', function() { return config.production = true; });
+// // Production tasks
+gulp.task('set-production', async function() { config.production = true; });
 gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
 gulp.task('minify-img', require('./build/minify-img')(gulp, config));
 gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
 
-// Run production tasks
-gulp.task('production', function(callback) {
-  runSequence(
-    'set-production',
-    'clean-build',
-    'styles',
-    'copy',
-    'minify-img',
-    'svg-icons',
-    'html',
-    'scripts',
-    'cache-bust',
-    callback
-  );
-});
+// // Run production tasks
+gulp.task('production', gulp.series(
+  'set-production',
+  'clean-build',
+  'default',
+  'minify-img',
+  'cache-bust'
+));
 
-// Deployment task
+// // Deployment task
 gulp.task('deploy', require('./build/deploy')(gulp));

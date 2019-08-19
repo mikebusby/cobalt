@@ -39,10 +39,13 @@ module.exports = function(gulp) {
       '**/*.html'
     ];
 
-    gulp.src(globs, {
-      base: './www',
-      cwd: './www',
-      buffer: false
-    }).pipe(conn.dest(ftpDest));
+    const stream = 
+      gulp.src(globs, {
+        base: './www',
+        cwd: './www',
+        buffer: false
+      }).pipe(conn.dest(ftpDest));
+
+    return stream;
   }
 }

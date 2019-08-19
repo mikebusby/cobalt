@@ -5,18 +5,19 @@
     "url": "git://github.com/MikeBusby/cobalt.git"
   },
   "scripts": {
-    "dev": "gulp",
+    "build": "gulp",
+    "dev": "gulp && gulp dev",
     "build-production": "gulp production",
     "deploy-staging": "gulp deploy",
     "deploy-production": "gulp deploy --env=production"
   },
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Cobalt Build Framework",
   "main": "gulpfile.js",
   "devDependencies": {
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-dom": "^1.0.0",
@@ -47,7 +48,6 @@
     "postcss-sassy-mixins": "^2.1.0",
     "postcss-scss": "^2.0.0",
     "rucksack-css": "^1.0.2",
-    "run-sequence": "^2.2.1",
     "vinyl-ftp": "^0.6.1",
     "yargs": "^13.2.2"
   },

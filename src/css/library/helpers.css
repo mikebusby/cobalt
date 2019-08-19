@@ -129,3 +129,7 @@
 .h-text-center {
   text-align: center;
 }
+
+.h-no-wrap {
+  white-space: nowrap;
+}

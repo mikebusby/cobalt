@@ -4,8 +4,9 @@
 
 module.exports = function(gulp, config) {
   return function() {
-    return gulp
-      .src(config.staticPath + '/favicon/favicon.ico')
-      .pipe(gulp.dest(config.buildPath));
+    const stream =
+      gulp.src(config.staticPath + '/favicon/favicon.ico')
+        .pipe(gulp.dest(config.buildPath));
+    return stream;
   }
 }

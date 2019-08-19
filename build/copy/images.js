@@ -4,8 +4,9 @@
 
 module.exports = function(gulp, config) {
   return function() {
-    return gulp
-      .src(config.staticPath + '/img/*')
-      .pipe(gulp.dest(config.buildPath + 'img/'));
+    const stream =
+      gulp.src(config.staticPath + '/img/*')
+        .pipe(gulp.dest(config.buildPath + 'img/'));
+    return stream;
   }
 }

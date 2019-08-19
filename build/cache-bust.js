@@ -12,17 +12,18 @@ module.exports = function(gulp, plugins, config) {
         date.getSeconds().toString();
     };
 
-    return gulp
-      .src(config.buildPath + '**/*.html')
-      .pipe(
-        plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
-      )
-      .pipe(
-        plugins.replace(/favicon.ico([0-9]*)/g, 'favicon.ico?' + getStamp())
-      )
-      .pipe(
-        plugins.replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp())
-      )
-      .pipe(gulp.dest(config.buildPath));
+    const stream = 
+      gulp.src(config.buildPath + '**/*.html')
+        .pipe(
+          plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
+        )
+        .pipe(
+          plugins.replace(/favicon.ico([0-9]*)/g, 'favicon.ico?' + getStamp())
+        )
+        .pipe(
+          plugins.replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp())
+        )
+        .pipe(gulp.dest(config.buildPath));
+    return stream;
   }
 }

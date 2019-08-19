@@ -6,7 +6,7 @@ Cobalt is a simple build framework for building static projects. Built by @MikeB
 
 ## Using
 
- - Gulp  
+ - Gulp 4
  - PostCSS  
  - PostCSS Assets  
  - PostCSS Easy sprite  

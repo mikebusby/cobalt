@@ -6,7 +6,7 @@ const path = require('path');
 
 module.exports = function(gulp, plugins, config) {
   return function() {
-    const svgs = gulp
+    const stream = gulp
       .src(config.staticPath + 'icons/*.svg')
       .pipe(plugins.svgmin(function (file) {
         const prefix = path.basename(file.relative, path.extname(file.relative));
@@ -27,7 +27,9 @@ module.exports = function(gulp, plugins, config) {
 
     gulp
       .src(config.staticPath + 'icons/_inline-icons.html')
-      .pipe(plugins.inject(svgs, { transform: fileContents }))
+      .pipe(plugins.inject(stream, { transform: fileContents }))
       .pipe(gulp.dest(config.staticPath + 'icons/'));
+
+    return stream;
   }
 }

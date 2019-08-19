@@ -6,6 +6,7 @@
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
 .bp-tester::after {
+  content: '';
   position: fixed;
   bottom: 0;
   right: 0;
@@ -14,38 +15,37 @@
   padding: 5px;
   text-align: center;
   color: white;
-  content: "";
   opacity: .25;
   font-size: 10px;
   font-weight: 500;
 
   @media (--xxl-bp) {
     background: red;
-    content: "XXL - Min 1200 · Max 1440";
+    content: 'XXL - Min 1200 · Max 1440';
   }
   @media (--xl-bp) {
     background: orange;
-    content: "XL - Min 992 · Max 1200";
+    content: 'XL - Min 992 · Max 1200';
   }
   @media (--l-bp) {
     background: goldenrod;
-    content: "L - Min 768 · Max 992";
+    content: 'L - Min 768 · Max 992';
   }
   @media (--m-bp) {
     background: green;
-    content: "M - Min 580 · Max 768";
+    content: 'M - Min 580 · Max 768';
   }
   @media (--s-bp) {
     background: blue;
-    content: "S - Min 480 · Max 580";
+    content: 'S - Min 480 · Max 580';
   }
   @media (--xs-bp) {
     background: purple;
-    content: "XS - Min 380 · Max 480";
+    content: 'XS - Min 380 · Max 480';
   }
   @media (--xxs-bp) {
     background: fuchsia;
-    content: "XXS - Min 380";
+    content: 'XXS - Min 380';
   }
 
 
@@ -54,27 +54,27 @@
   //
   // @include bp(xl) {
   //   background: red;
-  //   content: "XL - #{$xl-screen} +";
+  //   content: 'XL - #{$xl-screen} +';
   // }
   // @include bp(l)  {
   //   background: orange;
-  //   content: "LG - Min #{$l-screen} · Max #{$xl-screen}";
+  //   content: 'L - Min #{$l-screen} · Max #{$xl-screen}';
   // }
   // @include bp(m) {
   //   background: green;
-  //   content: "MD - Min #{$m-screen} · Max #{$l-screen}";
+  //   content: 'M - Min #{$m-screen} · Max #{$l-screen}';
   // }
   // @include bp(s) {
   //   background: blue;
-  //   content: "SM - Min #{$s-screen} · Max #{$m-screen}";
+  //   content: 'S - Min #{$s-screen} · Max #{$m-screen}';
   // }
   // @include bp(xs) {
   //   background: purple;
-  //   content: "XS - Min #{$xs-screen} · Max #{$s-screen}";
+  //   content: 'XS - Min #{$xs-screen} · Max #{$s-screen}';
   // }
   // @include bp(xxs) {
   //   background: fuchsia;
-  //   content: "XXS - Min #{$xxs-screen}";
+  //   content: 'XXS - Min #{$xxs-screen}';
   // }
 
 } // bp-tester
