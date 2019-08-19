@@ -80,5 +80,5 @@ gulp.task('production', gulp.series(
   'cache-bust'
 ));
 
-// // Deployment task
+// Deployment task
 gulp.task('deploy', require('./build/deploy')(gulp));
