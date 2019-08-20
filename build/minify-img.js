@@ -16,7 +16,7 @@ module.exports = function(gulp, config) {
         .pipe(imagemin([
           imageminPngquant({
             speed: 1,
-            quality: 90
+            quality: [0.8, 0.9]
           }),
           imageminZopfli({
             more: true
