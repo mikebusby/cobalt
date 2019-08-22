@@ -15,6 +15,7 @@ module.exports = function(gulp, plugins, config) {
           }
         },
         open: false,
+        notify: false,
         port: 1337,
         watch: true,
       });
