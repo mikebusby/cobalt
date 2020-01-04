@@ -133,3 +133,8 @@
 .h-no-wrap {
   white-space: nowrap;
 }
+
+.h-responsive-img {
+  max-width: 100%;
+  height: auto;
+}

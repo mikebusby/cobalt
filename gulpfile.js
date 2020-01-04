@@ -65,13 +65,13 @@ gulp.task('dev', gulp.parallel(
   'watch'
 ))
 
-// // Production tasks
+// Production tasks
 gulp.task('set-production', async function() { config.production = true; });
 gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
 gulp.task('minify-img', require('./build/minify-img')(gulp, config));
 gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
 
-// // Run production tasks
+// Run production tasks
 gulp.task('production', gulp.series(
   'set-production',
   'clean-build',
