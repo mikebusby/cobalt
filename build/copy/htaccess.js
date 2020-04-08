@@ -2,8 +2,8 @@
 // Copy .htaccess task
 //
 
-module.exports = function(gulp, config) {
-  return function() {
+module.exports = (gulp, config) => {
+  return () => {
     const stream =
       gulp.src(config.tplPath + '**/.htaccess')
         .pipe(gulp.dest(config.buildPath));

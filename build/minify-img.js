@@ -9,8 +9,8 @@ const imageminZopfli = require('imagemin-zopfli');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGiflossy = require('imagemin-giflossy');
 
-module.exports = function(gulp, config) {
-  return function() {
+module.exports = (gulp, config) => {
+  return () => {
     const stream =
       gulp.src(config.buildPath + '/img/*')
         .pipe(imagemin([

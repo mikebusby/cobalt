@@ -5,20 +5,24 @@
     "url": "git://github.com/MikeBusby/cobalt.git"
   },
   "scripts": {
-    "build": "gulp",
     "dev": "gulp && gulp dev",
-    "build-production": "gulp production",
-    "deploy-staging": "gulp deploy",
-    "deploy-production": "gulp deploy --env=production"
+    "build": "gulp",
+    "build:production": "gulp production",
+    "deploy:staging": "gulp deploy",
+    "deploy:production": "gulp deploy --env=production"
   },
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Cobalt Build Framework",
   "main": "gulpfile.js",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
     "browser-sync": "^2.26.7",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-dom": "^1.0.0",
@@ -34,7 +38,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.1",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify-es": "^2.0.0",
     "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",

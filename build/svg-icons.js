@@ -4,11 +4,11 @@
 
 const path = require('path');
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     const stream = gulp
       .src(config.staticPath + 'icons/*.svg')
-      .pipe(plugins.svgmin(function (file) {
+      .pipe(plugins.svgmin(function(file) {
         const prefix = path.basename(file.relative, path.extname(file.relative));
         return {
           plugins: [{
@@ -21,7 +21,7 @@ module.exports = function(gulp, plugins, config) {
       }))
       .pipe(plugins.svgstore({ inlineSvg: true }));
 
-    function fileContents(filePath, file) {
+    const fileContents = (filePath, file) => {
       return file.contents.toString();
     }
 

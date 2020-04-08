@@ -7,8 +7,8 @@ const argv = require('yargs').argv
 const ftp = require('vinyl-ftp');
 const fs = require('fs');
 
-module.exports = function(gulp) {
-  return function() {
+module.exports = (gulp) => {
+  return () => {
     let ftpDest, conn;
     let ftpConfig = JSON.parse(fs.readFileSync('./ftp-config.json', 'utf8'));
 

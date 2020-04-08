@@ -2,9 +2,9 @@
 // Cache bust task
 //
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
-    function getStamp() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
+    const getStamp = () => {
       const date = new Date();
       return date.getFullYear().toString() +
         ('0' + (date.getMonth() + 1)).slice(-2) +

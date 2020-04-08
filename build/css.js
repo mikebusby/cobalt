@@ -15,8 +15,8 @@ const rucksack = require('rucksack-css');
 const cssnano = require('cssnano');
 const mqpacker = require('css-mqpacker');
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     const stream =
       gulp.src(config.srcPath + '/css/main.css')
       .pipe(plugins.plumber({

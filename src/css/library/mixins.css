@@ -9,7 +9,7 @@
 //
 // Simple mixin to output specific code within a media target query
 //
-@mixin retina-img() {
+@mixin retina() {
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
     @content;
   }

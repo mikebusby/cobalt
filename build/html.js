@@ -6,8 +6,8 @@ const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const dom = require('gulp-dom');
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     const stream = 
       gulp.src([
         config.tplPath + '**/*.html',

@@ -9,8 +9,8 @@
 //
 // To install run: yarn add gulp-autoprefixer --dev && yarn add gulp-sass --dev
 
-module.exports = function (gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     const stream =
       gulp.src(config.srcPath + '/css/main.scss')
         .pipe(plugins.plumber({

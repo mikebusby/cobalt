@@ -27,7 +27,7 @@ let config = {
 // Main Tasks
 gulp.task('html', require('./build/html')(gulp, plugins, config));
 gulp.task('styles', require('./build/' + config.cssType)(gulp, plugins, config));
-gulp.task('scripts', require('./build/scripts')(gulp, plugins, config));
+gulp.task('scripts', require('./build/javascript')(gulp, plugins, config));
 gulp.task('svg-icons', require('./build/svg-icons')(gulp, plugins, config));
 gulp.task('web-server', require('./build/server')(gulp, plugins, config));
 
@@ -42,7 +42,7 @@ gulp.task('copy', gulp.series(
 ));
 
 // Watch file changes
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   gulp.watch(config.tplPath + '**/*.html', gulp.series('html'));
   gulp.watch(config.srcPath + 'css/**/*.' + config.cssType, gulp.series('styles'));
   gulp.watch(config.srcPath + 'js/**/*.js', gulp.series('scripts'));

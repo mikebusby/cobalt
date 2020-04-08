@@ -4,8 +4,8 @@
 
 const browserSync = require('browser-sync');
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     const stream = 
       browserSync.init({
         server: {

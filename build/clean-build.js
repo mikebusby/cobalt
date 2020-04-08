@@ -2,8 +2,8 @@
 // Clean build folder task
 //
 
-module.exports = function(gulp, plugins, config) {
-  return function() {
+module.exports = (gulp, plugins, config) => {
+  return () => {
     return gulp.src(config.buildPath, { read: false }).pipe(plugins.clean());
   }
 }
