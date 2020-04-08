@@ -19,22 +19,13 @@ module.exports = (gulp, plugins, config) => {
   return () => {
     const stream =
       gulp.src(config.srcPath + '/css/main.css')
-      .pipe(plugins.plumber({
-        errorHandler: function(err) {
-          plugins.notify.onError({
-            title: 'Gulp error in ' + err.plugin,
-            message: err.toString()
-          })(err);
-        }
-      }))
       .pipe(plugins.postcss([
         postcssImport(),
         postcssPresetEnv({
           stage: 1,
           features: {
             'custom-properties': {
-              preserve: false,
-              warnings: true
+              preserve: false
             }
           }
         }),
