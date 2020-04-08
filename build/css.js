@@ -5,7 +5,6 @@
 // Include PostCSS plugins
 const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
-const postcssColorMod = require('postcss-color-mod-function');
 const postcssNested = require('postcss-nested');
 const mixins = require('postcss-sassy-mixins');
 const conditionals = require('postcss-conditionals')
@@ -29,7 +28,6 @@ module.exports = (gulp, plugins, config) => {
             }
           }
         }),
-        postcssColorMod(),
         mixins(),
         postcssNested(),
         conditionals(),
