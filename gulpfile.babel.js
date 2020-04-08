@@ -15,13 +15,12 @@ const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 
 // Config variables
-let config = {
+const config = {
   srcPath: 'src/',
   buildPath: 'www/',
   staticPath: 'src/static/',
   tplPath: 'src/tpl/',
   cssType: 'css', // CSS (PostCSS) or SCSS
-  production: false
 }
 
 // Main Tasks
@@ -50,6 +49,11 @@ gulp.task('watch', () => {
   gulp.watch(config.staticPath + 'icons/*.svg', gulp.series('svg-icons'));
 });
 
+// Production tasks
+gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
+gulp.task('minify-img', require('./build/minify-img')(gulp, config));
+gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
+
 // Run build tasks
 gulp.task('default', gulp.series(
   'styles',
@@ -65,15 +69,8 @@ gulp.task('dev', gulp.parallel(
   'watch'
 ))
 
-// Production tasks
-gulp.task('set-production', require('./build/set-production')(config));
-gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
-gulp.task('minify-img', require('./build/minify-img')(gulp, config));
-gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
-
 // Run production tasks
 gulp.task('production', gulp.series(
-  'set-production',
   'clean-build',
   'default',
   'minify-img',

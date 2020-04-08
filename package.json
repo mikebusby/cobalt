@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "gulp && gulp dev",
     "build": "gulp",
-    "build:production": "gulp production",
+    "build:production": "gulp production --env=production",
     "deploy:staging": "gulp deploy",
     "deploy:production": "gulp deploy --env=production"
   },

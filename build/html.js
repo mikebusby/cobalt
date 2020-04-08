@@ -2,12 +2,15 @@
 // HTML build task
 //
 
+const argv = require('yargs').argv
 const fileinclude = require('gulp-file-include');
 const gulpif = require('gulp-if');
 const dom = require('gulp-dom');
 
 module.exports = (gulp, plugins, config) => {
   return () => {
+    const productionEnv = argv.env === 'production' ? true : false;
+
     const stream = 
       gulp.src([
         config.tplPath + '**/*.html',
@@ -27,11 +30,11 @@ module.exports = (gulp, plugins, config) => {
           basepath: 'src/tpl/'
         }))
         .pipe(gulpif(
-          config.production,
+          productionEnv,
           plugins.htmlmin({ collapseWhitespace: true })
         ))
         .pipe(gulpif(
-          !config.production,
+          !productionEnv,
           dom(function() {
             return this.querySelectorAll('body')[0].classList.add('bp-tester');
           })
