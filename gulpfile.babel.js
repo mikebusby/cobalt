@@ -66,7 +66,7 @@ gulp.task('dev', gulp.parallel(
 ))
 
 // Production tasks
-gulp.task('set-production', async function() { config.production = true; });
+gulp.task('set-production', require('./build/set-production')(config));
 gulp.task('clean-build', require('./build/clean-build')(gulp, plugins, config));
 gulp.task('minify-img', require('./build/minify-img')(gulp, config));
 gulp.task('cache-bust', require('./build/cache-bust')(gulp, plugins, config));
