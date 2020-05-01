@@ -28,7 +28,7 @@ gulp.task('html', require('./build/html')(gulp, plugins, config));
 gulp.task('styles', require('./build/' + config.CSS_TYPE)(gulp, plugins, config));
 gulp.task('scripts', require('./build/javascript')(gulp, plugins, config));
 gulp.task('svg-icons', require('./build/svg-icons')(gulp, plugins, config));
-gulp.task('web-server', require('./build/server')(gulp, plugins, config));
+gulp.task('web-server', require('./build/server')());
 
 // Copy file tasks
 gulp.task('copy-img', require('./build/copy/images')(gulp, config));
