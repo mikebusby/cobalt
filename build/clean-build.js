@@ -4,6 +4,6 @@
 
 module.exports = (gulp, plugins, config) => {
   return () => {
-    return gulp.src(config.buildPath, { read: false }).pipe(plugins.clean());
+    return gulp.src(config.BUILD_PATH, { read: false }).pipe(plugins.clean());
   }
 }

@@ -13,21 +13,21 @@ module.exports = (gulp, plugins, config) => {
 
     const stream = 
       gulp.src([
-        config.tplPath + '**/*.html',
-          '!' + config.tplPath + '_**/_*/',
-          '!' + config.tplPath + '**/_*/**/*'
+        config.TPL_PATH + '**/*.html',
+          '!' + config.TPL_PATH + '_**/_*/',
+          '!' + config.TPL_PATH + '**/_*/**/*',
         ])
         .pipe(plugins.plumber({
           errorHandler: function(err) {
             plugins.notify.onError({
               title: 'Gulp error in ' + err.plugin,
-              message: err.toString()
+              message: err.toString(),
             })(err);
-          }
+          },
         }))
         .pipe(fileinclude({
           prefix: '@@',
-          basepath: 'src/tpl/'
+          basepath: 'src/tpl/',
         }))
         .pipe(gulpif(
           productionEnv,
@@ -39,7 +39,7 @@ module.exports = (gulp, plugins, config) => {
             return this.querySelectorAll('body')[0].classList.add('bp-tester');
           })
         ))
-        .pipe(gulp.dest(config.buildPath));
+        .pipe(gulp.dest(config.BUILD_PATH));
 
     return stream;
   }

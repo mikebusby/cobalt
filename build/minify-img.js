@@ -12,28 +12,28 @@ const imageminGiflossy = require('imagemin-giflossy');
 module.exports = (gulp, config) => {
   return () => {
     const stream =
-      gulp.src(config.buildPath + '/img/*')
+      gulp.src(config.BUILD_PATH + '/img/*')
         .pipe(imagemin([
           imageminPngquant({
             speed: 1,
-            quality: [0.8, 0.9]
+            quality: [0.8, 0.9],
           }),
           imageminZopfli({
-            more: true
+            more: true,
           }),
           imageminGiflossy({
             optimizationLevel: 3,
             optimize: 3,
-            lossy: 2
+            lossy: 2,
           }),
           imagemin.jpegtran({
-            progressive: true
+            progressive: true,
           }),
           imageminMozjpeg({
-            quality: 80
-          })
+            quality: 80,
+          }),
         ]))
-        .pipe(gulp.dest(config.buildPath + 'img/'));
+        .pipe(gulp.dest(config.BUILD_PATH + 'img/'));
         
     return stream;
   }

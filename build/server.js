@@ -4,15 +4,15 @@
 
 const browserSync = require('browser-sync');
 
-module.exports = (gulp, plugins, config) => {
+module.exports = () => {
   return () => {
     const stream = 
       browserSync.init({
         server: {
           baseDir: './www',
           serveStaticOptions: {
-            extensions: ['html']
-          }
+            extensions: ['html'],
+          },
         },
         open: false,
         notify: false,

@@ -16,16 +16,16 @@ const plugins = require('gulp-load-plugins')();
 
 // Config variables
 const config = {
-  srcPath: 'src/',
-  buildPath: 'www/',
-  staticPath: 'src/static/',
-  tplPath: 'src/tpl/',
-  cssType: 'css', // CSS (PostCSS) or SCSS
+  SRC_PATH: 'src/',
+  BUILD_PATH: 'www/',
+  STATIC_PATH: 'src/static/',
+  TPL_PATH: 'src/tpl/',
+  CSS_TYPE: 'css', // CSS (PostCSS) or SCSS
 }
 
 // Main Tasks
 gulp.task('html', require('./build/html')(gulp, plugins, config));
-gulp.task('styles', require('./build/' + config.cssType)(gulp, plugins, config));
+gulp.task('styles', require('./build/' + config.CSS_TYPE)(gulp, plugins, config));
 gulp.task('scripts', require('./build/javascript')(gulp, plugins, config));
 gulp.task('svg-icons', require('./build/svg-icons')(gulp, plugins, config));
 gulp.task('web-server', require('./build/server')(gulp, plugins, config));
@@ -42,11 +42,11 @@ gulp.task('copy', gulp.series(
 
 // Watch file changes
 gulp.task('watch', () => {
-  gulp.watch(config.tplPath + '**/*.html', gulp.series('html'));
-  gulp.watch(config.srcPath + 'css/**/*.' + config.cssType, gulp.series('styles'));
-  gulp.watch(config.srcPath + 'js/**/*.js', gulp.series('scripts'));
-  gulp.watch(config.staticPath + 'img/*', gulp.series('copy-img'));
-  gulp.watch(config.staticPath + 'icons/*.svg', gulp.series('svg-icons'));
+  gulp.watch(config.TPL_PATH + '**/*.html', gulp.series('html'));
+  gulp.watch(config.SRC_PATH + 'css/**/*.' + config.CSS_TYPE, gulp.series('styles'));
+  gulp.watch(config.SRC_PATH + 'js/**/*.js', gulp.series('scripts'));
+  gulp.watch(config.STATIC_PATH + 'img/*', gulp.series('copy-img'));
+  gulp.watch(config.STATIC_PATH + 'icons/*.svg', gulp.series('svg-icons'));
 });
 
 // Production tasks

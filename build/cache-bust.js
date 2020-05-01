@@ -13,7 +13,7 @@ module.exports = (gulp, plugins, config) => {
     };
 
     const stream = 
-      gulp.src(config.buildPath + '**/*.html')
+      gulp.src(config.BUILD_PATH + '**/*.html')
         .pipe(
           plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
         )
@@ -23,7 +23,7 @@ module.exports = (gulp, plugins, config) => {
         .pipe(
           plugins.replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp())
         )
-        .pipe(gulp.dest(config.buildPath));
+        .pipe(gulp.dest(config.BUILD_PATH));
     return stream;
   }
 }

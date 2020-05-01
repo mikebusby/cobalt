@@ -17,7 +17,7 @@ module.exports = (gulp) => {
         host: ftpConfig.ftp.production.host,
         user: ftpConfig.ftp.production.user,
         password: ftpConfig.ftp.production.pass,
-        parallel: 10
+        parallel: 10,
       });
       ftpDest = ftpConfig.ftp.production.dest;
     } else {
@@ -25,7 +25,7 @@ module.exports = (gulp) => {
         host: ftpConfig.ftp.staging.host,
         user: ftpConfig.ftp.staging.user,
         password: ftpConfig.ftp.staging.pass,
-        parallel: 10
+        parallel: 10,
       });
       ftpDest = ftpConfig.ftp.staging.dest;
     }
@@ -36,14 +36,14 @@ module.exports = (gulp) => {
       'js/**',
       'favicon.ico',
       '.htaccess',
-      '**/*.html'
+      '**/*.html',
     ];
 
     const stream = 
       gulp.src(globs, {
         base: './www',
         cwd: './www',
-        buffer: false
+        buffer: false,
       }).pipe(conn.dest(ftpDest));
 
     return stream;

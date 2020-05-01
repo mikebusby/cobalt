@@ -7,7 +7,7 @@
   "extends": ["eslint:recommended"],
   "ignorePatterns": ["www/"],
   "rules": {
-    "comma-dangle": ["error", "always"],
+    "comma-dangle": ["error", "always-multiline"],
     "quotes": ["error", "single"]
   }
 }
