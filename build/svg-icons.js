@@ -7,13 +7,13 @@ const path = require('path');
 module.exports = (gulp, plugins, config) => {
   return () => {
     const stream = gulp
-      .src(config.STATIC_PATH + 'icons/*.svg')
+      .src(`${config.STATIC_PATH}icons/*.svg`)
       .pipe(plugins.svgmin(function(file) {
         const prefix = path.basename(file.relative, path.extname(file.relative));
         return {
           plugins: [{
             cleanupIDs: {
-              prefix: prefix + '-',
+              prefix: `${prefix}-`,
               minify: true,
             },
           }],
@@ -26,9 +26,13 @@ module.exports = (gulp, plugins, config) => {
     }
 
     gulp
-      .src(config.STATIC_PATH + 'icons/_inline-icons.html')
+      .src(`${config.STATIC_PATH}icons/_inline-icons.html`)
       .pipe(plugins.inject(stream, { transform: fileContents }))
-      .pipe(gulp.dest(config.STATIC_PATH + 'icons/'));
+      .pipe(plugins.rename({
+        basename: '_generated-icons',
+        extname: '.njk',
+      }))
+      .pipe(gulp.dest(`${config.TPL_PATH}_partials/`));
 
     return stream;
   }

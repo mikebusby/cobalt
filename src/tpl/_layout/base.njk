@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
+
+  {% include "_partials/_generated-icons.njk" %}
+  <script src="/js/main.min.js"></script>
+</body>
+</html>
