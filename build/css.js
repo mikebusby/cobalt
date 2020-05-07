@@ -15,7 +15,7 @@ const mqpacker = require('css-mqpacker');
 module.exports = (gulp, plugins, config) => {
   return () => {
     const stream =
-      gulp.src(config.SRC_PATH + '/css/main.css')
+      gulp.src(`${config.SRC_PATH}css/main.css`)
       .pipe(plugins.postcss([
         postcssImport(),
         postcssTailwind(),
@@ -33,7 +33,7 @@ module.exports = (gulp, plugins, config) => {
         cssnano(),
         mqpacker(),
       ], { syntax: require('postcss-scss') }))
-      .pipe(gulp.dest(config.BUILD_PATH + 'css/'));
+      .pipe(gulp.dest(`${config.BUILD_PATH}css/`));
 
     return stream;
   }

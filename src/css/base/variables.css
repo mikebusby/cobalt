@@ -11,15 +11,4 @@
 
   --primary-brand:                       theme(colors.brand-primary);
   --secondary-brand:                     theme(colors.brand-secondary);
-
 }
-
-//
-// For SCSS
-//
-// $xxs-screen:                            380px !default;
-// $xs-screen:                             480px !default;
-// $s-screen:                              768px !default;
-// $m-screen:                              992px !default;
-// $l-screen:                              1200px !default;
-// $xl-screen:                             1440px !default;

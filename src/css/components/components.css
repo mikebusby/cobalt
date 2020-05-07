@@ -4,3 +4,11 @@
 //  Component Imports
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+.test {
+  @apply container;
+
+  @screen sm {
+    background-color: red;
+  }
+}

@@ -4,6 +4,15 @@ module.exports = {
     content: ['./src/tpl/**/*.njk'],
   },
   theme: {
+    container: {
+      center: true,
+      padding: {
+        default: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+      },
+    },
     extend: {
       screens: {
         '2xl': '1440px',

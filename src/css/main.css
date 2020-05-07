@@ -22,3 +22,27 @@
 
 // Custom Utilities
 @import 'utilities/utilities';
+
+
+
+//
+// For SCSS Builds
+//
+
+// // Tailwind Preflight
+// @tailwind base;
+
+// // Custom Base
+// @import 'base/base';
+
+// // Tailwind Components
+// @tailwind components;
+
+// // Custom Components
+// @import 'components/components';
+
+// // Tailwind Utilities
+// @tailwind utilities;
+
+// // Custom Utilities
+// @import 'utilities/utilities';

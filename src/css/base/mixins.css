@@ -43,28 +43,3 @@
   width: $size;
   height: $size;
 }
-
-
-
-//
-// Responsive Breakpoint (SCSS Only)
-//
-@mixin bp($size) {
-
-  @if ($size == xl) {
-    @media (min-width: $xl-screen) { @content }
-  } @else if ($size == l) {
-    @media (max-width: $xl-screen - 1) { @content }
-  } @else if ($size == m) {
-    @media (max-width: $l-screen - 1) { @content }
-  } @else if ($size == s) {
-    @media (max-width: $m-screen - 1) { @content }
-  } @else if ($size == xs) {
-    @media (max-width: $s-screen - 1) { @content }
-  } @else if ($size == xxs) {
-    @media (max-width: $xs-screen - 1) { @content }
-  } @else {
-    @media (max-width: $size) { @content }
-  }
-
-} // bp()

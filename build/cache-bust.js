@@ -13,16 +13,10 @@ module.exports = (gulp, plugins, config) => {
     };
 
     const stream = 
-      gulp.src(config.BUILD_PATH + '**/*.html')
-        .pipe(
-          plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp())
-        )
-        .pipe(
-          plugins.replace(/favicon.ico([0-9]*)/g, 'favicon.ico?' + getStamp())
-        )
-        .pipe(
-          plugins.replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp())
-        )
+      gulp.src(`${config.BUILD_PATH}**/*.html`)
+        .pipe(plugins.replace(/main.css([0-9]*)/g, 'main.css?' + getStamp()))
+        .pipe(plugins.replace(/favicon.ico([0-9]*)/g, 'favicon.ico?' + getStamp()))
+        .pipe(plugins.replace(/main.min.js([0-9]*)/g, 'main.min.js?' + getStamp()))
         .pipe(gulp.dest(config.BUILD_PATH));
     return stream;
   }
