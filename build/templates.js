@@ -23,6 +23,9 @@ module.exports = (gulp, plugins, config) => {
           })(err);
           },
         }))
+        .pipe(plugins.data(function() {
+          return require(`${config.DATA_PATH}data.json`)
+        }))
         .pipe(nunjucksRender({
           path: [
             `${config.TPL_PATH}`,

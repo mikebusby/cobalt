@@ -20,6 +20,7 @@ const config = {
   BUILD_PATH: 'www/',
   STATIC_PATH: 'src/static/',
   TPL_PATH: 'src/tpl/',
+  DATA_PATH: `${__dirname}/src/data/`,
   CSS_TYPE: 'css', // CSS (PostCSS) or SCSS
 }
 
@@ -43,10 +44,11 @@ gulp.task('copy', gulp.series(
 // Watch file changes
 gulp.task('watch', () => {
   gulp.watch(`${config.TPL_PATH}**/*.njk`, gulp.series('templates', 'styles'));
-  gulp.watch(config.SRC_PATH + 'css/**/*.' + config.CSS_TYPE, gulp.series('styles'));
-  gulp.watch(config.SRC_PATH + 'js/**/*.js', gulp.series('scripts'));
-  gulp.watch(config.STATIC_PATH + 'img/*', gulp.series('copy-img'));
-  gulp.watch(config.STATIC_PATH + 'icons/*.svg', gulp.series('svg-icons'));
+  gulp.watch(`${config.SRC_PATH}css/**/*. ${config.CSS_TYPE}`, gulp.series('styles'));
+  gulp.watch(`${config.DATA_PATH}*.json`, gulp.series('templates'));
+  gulp.watch(`${config.SRC_PATH}js/**/*.js`, gulp.series('scripts'));
+  gulp.watch(`${config.STATIC_PATH}img/*`, gulp.series('copy-img'));
+  gulp.watch(`${config.STATIC_PATH}icons/*.svg`, gulp.series('svg-icons'));
 });
 
 // Production tasks
