@@ -8,42 +8,12 @@ Cobalt is a simple build framework for building static projects. Built by @MikeB
 
  - Gulp 4
  - Nunjucks
- - PostCSS  
- - PostCSS Assets  
- - PostCSS Easy sprite  
- - CSS Next  
- - Rucksack CSS  
- - CSS Nano  
- - Media Query Packer  
-
-PostCSS SCSS like plugins:  
- - Import  
- - Nested  
- - Mixins  
- - Conditionals  
+ - Tailwind CSS
+ - PostCSS (Or SCSS)
 
 ## Installation
 
 Node & Yarn need to be installed
-
-## Examples
-
-```sass
-.arrow {
-  // Using PostCSS Assets to get dimension of asset
-  width: width('sprite-img/arrow.png');
-  height: height('sprite-img/arrow.png');
-  
-  // PostCSS Easysprite use the hash and URL doesn't need sprite-img/
-  background-image: url('/arrow.png#sprite');
-
-  // Simple retina mixin just outputs media query with content
-  @include retina {
-    background-image: url('/arrow@2x.png#sprite');
-  }
-  
-} // .arrow
-```
 
 ## Usage
 

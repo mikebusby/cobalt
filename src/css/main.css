@@ -5,23 +5,20 @@
 //
 // ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
 
-// Variable Imports
-@import 'variables/base';
+// Tailwind Preflight
+@import 'tailwindcss/base';
 
+// Custom Base
+@import 'base/base';
 
-// Library Imports
-@import 'library/reset';
-@import 'library/mixins';
-@import 'library/helpers';
-@import 'library/responsive';
-@import 'library/bp-tester';
+// Tailwind Components
+@import 'tailwindcss/components';
 
+// Custom Components
+@import 'components/components';
 
-// Core Imports
-@import 'core/base';
-@import 'core/typography';
-@import 'core/layout';
+// Tailwind Utilities
+@import 'tailwindcss/utilities';
 
-
-// Component Imports
-@import 'components/icons';
+// Custom Utilities
+@import 'utilities/utilities';
