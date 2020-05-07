@@ -1,0 +1,14 @@
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+//
+//  Cobalt
+//  Base > Variables
+//
+// ++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ++
+
+:root {
+  --black:                               theme(colors.black);
+  --white:                               theme(colors.white);
+
+  --primary-brand:                       theme(colors.brand-primary);
+  --secondary-brand:                     theme(colors.brand-secondary);
+}
