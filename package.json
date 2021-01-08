@@ -60,5 +60,6 @@
     "yargs": "^13.2.2"
   },
   "author": "Mike Busby (@MikeBusby)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

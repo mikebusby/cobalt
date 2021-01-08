@@ -26,7 +26,7 @@ const config = {
 
 // Main Tasks
 gulp.task('templates', require('./build/templates')(gulp, plugins, config));
-gulp.task('styles', require('./build/' + config.CSS_TYPE)(gulp, plugins, config));
+gulp.task('styles', require(`./build/${config.CSS_TYPE}`)(gulp, plugins, config));
 gulp.task('scripts', require('./build/javascript')(gulp, plugins, config));
 gulp.task('svg-icons', require('./build/svg-icons')(gulp, plugins, config));
 gulp.task('web-server', require('./build/server')());
@@ -44,7 +44,7 @@ gulp.task('copy', gulp.series(
 // Watch file changes
 gulp.task('watch', () => {
   gulp.watch(`${config.TPL_PATH}**/*.njk`, gulp.series('templates', 'styles'));
-  gulp.watch(`${config.SRC_PATH}css/**/*. ${config.CSS_TYPE}`, gulp.series('styles'));
+  gulp.watch(`${config.SRC_PATH}css/**/*.${config.CSS_TYPE}`, gulp.series('styles'));
   gulp.watch(`${config.DATA_PATH}*.json`, gulp.series('templates'));
   gulp.watch(`${config.SRC_PATH}js/**/*.js`, gulp.series('scripts'));
   gulp.watch(`${config.STATIC_PATH}img/*`, gulp.series('copy-img'));
