@@ -26,10 +26,8 @@ module.exports = (gulp, config) => {
             optimize: 3,
             lossy: 2,
           }),
-          imagemin.jpegtran({
-            progressive: true,
-          }),
           imageminMozjpeg({
+            progressive: true,
             quality: 80,
           }),
         ]))
