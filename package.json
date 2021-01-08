@@ -37,7 +37,7 @@
     "gulp-notify": "^3.2.0",
     "gulp-nunjucks-render": "^2.2.3",
     "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^8.0.0",
+    "gulp-postcss": "^9.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.1.0",
@@ -53,7 +53,7 @@
     "postcss-nested": "^4.1.2",
     "postcss-preset-env": "^6.6.0",
     "postcss-sassy-mixins": "^2.1.0",
-    "postcss-scss": "^2.0.0",
+    "postcss-scss": "^3.0.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vinyl-ftp": "^0.6.1",
     "yargs": "^16.2.0"
