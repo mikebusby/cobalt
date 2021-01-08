@@ -11,6 +11,7 @@ const mixins = require('postcss-sassy-mixins');
 const conditionals = require('postcss-conditionals')
 const cssnano = require('cssnano');
 const mqpacker = require('css-mqpacker');
+const autoprefixer = require('autoprefixer');
 
 module.exports = (gulp, plugins, config) => {
   return () => {
@@ -32,6 +33,7 @@ module.exports = (gulp, plugins, config) => {
         conditionals(),
         cssnano(),
         mqpacker(),
+        autoprefixer(),
       ], { syntax: require('postcss-scss') }))
       .pipe(gulp.dest(`${config.BUILD_PATH}css/`));
 
