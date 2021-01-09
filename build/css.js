@@ -22,11 +22,6 @@ module.exports = (gulp, plugins, config) => {
         postcssTailwind(),
         postcssPresetEnv({
           stage: 1,
-          features: {
-            'custom-properties': {
-              preserve: false,
-            },
-          },
         }),
         postcssNested(),
         postcssCombinemq(),
