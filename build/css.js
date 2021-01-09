@@ -7,10 +7,10 @@ const postcssImport = require('postcss-import');
 const postcssTailwind = require('tailwindcss');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssNested = require('postcss-nested');
+const postcssCombinemq = require('postcss-combine-media-query');
 const mixins = require('postcss-sassy-mixins');
 const conditionals = require('postcss-conditionals')
 const cssnano = require('cssnano');
-const mqpacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
 
 module.exports = (gulp, plugins, config) => {
@@ -28,11 +28,11 @@ module.exports = (gulp, plugins, config) => {
             },
           },
         }),
-        mixins(),
         postcssNested(),
+        postcssCombinemq(),
+        mixins(),
         conditionals(),
         cssnano(),
-        mqpacker(),
         autoprefixer(),
       ], { syntax: require('postcss-scss') }))
       .pipe(gulp.dest(`${config.BUILD_PATH}css/`));
