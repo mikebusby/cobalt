@@ -12,3 +12,5 @@
   --primary-brand:                       theme(colors.brand-primary);
   --secondary-brand:                     theme(colors.brand-secondary);
 }
+
+@custom-media --retina (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi);
