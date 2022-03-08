@@ -1,5 +1,3 @@
-<img src="http://assets.busby.design/img/cobalt-logo.png" width="351" height="99">
-
 # Cobalt Build Framework
 
 Cobalt is a simple build framework for building static projects. Built by @MikeBusby
